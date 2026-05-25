@@ -1,3 +1,4 @@
+https://yourname.github.io/ai-self-repair-2026-05-25/
 https://yourname.github.io/from-karpathy-to-opencli-llm-native-tools/
 https://yourname.github.io/categories/
 https://yourname.github.io/tags/
@@ -6,4 +7,8 @@ https://yourname.github.io/
 https://yourname.github.io/tags/AI%E5%B7%A5%E5%85%B7/
 https://yourname.github.io/tags/Agent%E5%B7%A5%E4%BD%9C%E6%B5%81/
 https://yourname.github.io/tags/OpenCLI/
+https://yourname.github.io/tags/AI-Agent/
+https://yourname.github.io/tags/%E8%87%AA%E4%BF%AE%E5%A4%8D/
+https://yourname.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/
 https://yourname.github.io/categories/AI%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/
+https://yourname.github.io/categories/AI-%E7%A0%94%E7%A9%B6/

@@ -49,4 +49,71 @@
         <tag>OpenCLI</tag>
       </tags>
   </entry>
+  <entry>
+    <title>当 AI 开始自己修自己——从 OpenCLI 自修复看 Agent 的下一步</title>
+    <url>/ai-self-repair-2026-05-25/</url>
+    <content><![CDATA[<h1 id="当-AI-开始自己修自己——从-OpenCLI-自修复看-Agent-的下一步"><a href="#当-AI-开始自己修自己——从-OpenCLI-自修复看-Agent-的下一步" class="headerlink" title="当 AI 开始自己修自己——从 OpenCLI 自修复看 Agent 的下一步"></a>当 AI 开始自己修自己——从 OpenCLI 自修复看 Agent 的下一步</h1><p>你有没有这样的经历：精心搭建的自动化脚本，某天网站改了个按钮的位置，整个工作流就崩了。然后你花一整个下午调试，发现不过是 CSS 选择器变了。</p>
+<p>OpenCLI 的 <code>opencli-autofix</code> 技能直接解决了这个问题——当命令失败，AI Agent 自动诊断、自动修复、自动重试。整个过程无人干预。</p>
+<h2 id="自修复是怎么工作的"><a href="#自修复是怎么工作的" class="headerlink" title="自修复是怎么工作的"></a>自修复是怎么工作的</h2><p>三步走：</p>
+<ol>
+<li><p><strong>抓证据</strong>：命令失败后，用 <code>--trace retain-on-failure</code> 重新执行，捕获浏览器截图、网络请求、控制台日志、DOM 状态——一切能帮 AI 理解「哪里出了问题」的信息。</p>
+</li>
+<li><p><strong>找病灶</strong>：从 trace 中提取 <code>adapterSourcePath</code>，精确定位到出问题的那个适配器文件。不是猜测，不是全文搜索，是系统自动告诉 AI「这个文件坏了」。</p>
+</li>
+<li><p><strong>改完重试</strong>：AI 修改适配器代码，重新执行原命令。最多重试三次，防止无限循环。</p>
+</li>
+</ol>
+<h2 id="关键设计：知道什么不能碰"><a href="#关键设计：知道什么不能碰" class="headerlink" title="关键设计：知道什么不能碰"></a>关键设计：知道什么不能碰</h2><p>自修复之所以可靠，是因为它<strong>明确知道自己不能做什么</strong>：</p>
+<ul>
+<li>❌ 不能改核心运行时代码（<code>src/**</code>）</li>
+<li>❌ 不能改浏览器扩展（<code>extension/**</code>）</li>
+<li>❌ 不能动研究基础设施（<code>autoresearch/**</code>）</li>
+<li>❌ 认证错误、验证码、速率限制——这些不是代码能修的，直接跳过</li>
+</ul>
+<p>只修适配器文件。范围越小，越安全。</p>
+<h2 id="更进一步：自主研究引擎"><a href="#更进一步：自主研究引擎" class="headerlink" title="更进一步：自主研究引擎"></a>更进一步：自主研究引擎</h2><p>OpenCLI 不只是「坏了再修」，它还有个 <strong>autoresearch</strong> 引擎——8 阶段迭代循环，主动优化代码：</p>
+<ul>
+<li>跑基线指标 → AI 提修改建议 → 提交 Git → 验证新指标 → 保留或回滚</li>
+<li>预设系统指导方向：「浏览器可靠性 100%」「知乎命令通过率 60&#x2F;60」</li>
+<li>每次迭代都有完整的指标追踪，知道哪次改了什么、效果如何</li>
+</ul>
+<p>这不就是资深工程师的工作方式吗？定目标、改代码、看结果、不行就回退。只不过执行者变成了 AI。</p>
+<h2 id="从「人工审核」到「自主运行」"><a href="#从「人工审核」到「自主运行」" class="headerlink" title="从「人工审核」到「自主运行」"></a>从「人工审核」到「自主运行」</h2><p>之前我们说 Agent 工作流的核心是<strong>人在关键节点审核</strong>。但自修复能力让这条线往前走了一步：</p>
+<ul>
+<li>日常故障（网站 DOM 变了、API 格式调整）→ AI 自己处理</li>
+<li>超出范围的问题（认证失效、功能下线）→ 仍然需要人介入</li>
+</ul>
+<p>这不是取代人的审核角色，而是<strong>把人的注意力从琐事中释放出来</strong>，只处理真正需要判断力的问题。</p>
+<h2 id="CodeWiki：AI-自己读懂自己的代码"><a href="#CodeWiki：AI-自己读懂自己的代码" class="headerlink" title="CodeWiki：AI 自己读懂自己的代码"></a>CodeWiki：AI 自己读懂自己的代码</h2><p>还有一个有意思的发现：Google 的 CodeWiki 可以自动把整个 GitHub 仓库转成完整的技术文档。OpenCLI 的 CodeWiki 文档有 788 行，覆盖了架构、命令、API、内部实现——AI 生成，AI 消费。</p>
+<p>这形成了一个有趣的闭环：</p>
+<ol>
+<li><strong>CodeWiki</strong> 生成项目文档（AI 写）</li>
+<li><strong>autofix</strong> 代理阅读文档理解项目（AI 读）</li>
+<li>代理诊断问题并修复代码（AI 修）</li>
+<li>CodeWiki 重新生成文档（AI 更新）</li>
+</ol>
+<p>人只需要在开始时输入仓库 URL，在结束时确认修复结果。中间的全链路——理解、诊断、修复、更新——都是 AI 完成。</p>
+<p>这大概就是 Karpathy 所说的 <strong>menugen</strong>（LLM 可完全吞没的应用）的最佳体现：输入一个 URL，输出一个自维护的自动化系统。</p>
+<h2 id="另一个被忽视的真相"><a href="#另一个被忽视的真相" class="headerlink" title="另一个被忽视的真相"></a>另一个被忽视的真相</h2><p>顺便一提，今天还看到一条有意思的推文：大多数 Claude 用户只用最基础的功能。Claude 其实有四个被严重低估的能力：</p>
+<ul>
+<li><strong>Projects</strong>：持久工作区，跨聊天记住上下文</li>
+<li><strong>Artifacts</strong>：聊天内直接生成交互式应用</li>
+<li><strong>Extended Thinking</strong>：逐步推理，处理复杂问题</li>
+<li><strong>Memory</strong>：构建你的长期画像，新聊天自动带入</li>
+</ul>
+<p>尤其是 Memory——默认关闭，大多数人不知道它存在。开启后 Claude 会逐步了解你的工作、项目、偏好，你再也不用每次对话都重新介绍自己。</p>
+<p>这和自修复是同一个问题的两面：<strong>工具的能力边界远大于我们的使用边界</strong>。AI Agent 的自修复解决了「工具坏了怎么办」的问题；但「工具能做什么但用户不知道」——这个问题，可能更需要解决。</p>
+<hr>
+<p><em>本文基于 Wiki 知识库关联分析生成，涉及页面：[[opencli]]、[[ai-self-repair]]、[[code-wiki]]、[[claude-code]]、[[menugen]]、[[agent-workflow]]</em></p>
+]]></content>
+      <categories>
+        <category>AI 研究</category>
+      </categories>
+      <tags>
+        <tag>OpenCLI</tag>
+        <tag>AI Agent</tag>
+        <tag>自修复</tag>
+        <tag>自动化</tag>
+      </tags>
+  </entry>
 </search>
