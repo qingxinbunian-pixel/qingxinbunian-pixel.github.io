@@ -116,4 +116,125 @@
         <tag>自动化</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Agent 为什么会停下来？——从 Yidabuilds 到 Hermes，看 AI 长期自治的三层跃迁</title>
+    <url>/agent-autonomy-three-layers-2026-05-26/</url>
+    <content><![CDATA[<h1 id="Agent-为什么会停下来？——从-Yidabuilds-到-Hermes，看-AI-长期自治的三层跃迁"><a href="#Agent-为什么会停下来？——从-Yidabuilds-到-Hermes，看-AI-长期自治的三层跃迁" class="headerlink" title="Agent 为什么会停下来？——从 Yidabuilds 到 Hermes，看 AI 长期自治的三层跃迁"></a>Agent 为什么会停下来？——从 Yidabuilds 到 Hermes，看 AI 长期自治的三层跃迁</h1><p>最近三天读了三篇完全不同角度的文章，拼在一起却画出了一条清晰的线：AI Agent 从”工具”到”同事”再到”自治工作者”的跃迁路径。</p>
+<h2 id="第一层：Agent-作为交付引擎"><a href="#第一层：Agent-作为交付引擎" class="headerlink" title="第一层：Agent 作为交付引擎"></a>第一层：Agent 作为交付引擎</h2><p>Yidabuilds（百年）是 00 后，NUS 数据科学毕业，主业做跨境电商。今年 1 月开始认真用 Claude Code 做副业，4 个月变现超 10 万。</p>
+<p>他的收入构成：</p>
+<ul>
+<li>企业定制项目 7 万+（多源数据聚合实时看板）</li>
+<li>教培收入 3 万左右</li>
+<li>Skill 包和方法论产品几千块</li>
+<li>SEO 站点广告收入每月几十美金，持续增长</li>
+</ul>
+<p>但真正值得注意的不是金额，而是他给自己搭的 <strong>Skill &#x2F; Agent &#x2F; Hook 工作流</strong>：</p>
+<ul>
+<li><strong>Skill</strong>：把常用能力沉淀成可复用模块（部署、SEO 审计、站点初始化）</li>
+<li><strong>Agent</strong>：把多步骤任务拆成自动化流程（建站、抓取、清洗、发布）</li>
+<li><strong>Hook</strong>：提交代码后自动跑格式化、检查和基础安全扫描</li>
+<li><strong>凭证管理</strong>：所有项目按名称分文件夹管理，部署脚本自动读取环境变量</li>
+</ul>
+<p>这套系统跑顺后，他的交付速度惊人：完整数据看板 2-3 天，自动化工具 1 周，SEO 站点快时一个下午。</p>
+<p>但他也坦诚，这不是”AI 一键赚钱”。中间有大量试错、沟通、返工。Claude Code 把一个人的交付上限拉高了很多，但每次都要他来触发、来拆任务、来确认。</p>
+<blockquote>
+<p>副业不一定只能靠卖时间，也可以靠系统、工具和资产慢慢滚起来。</p>
+</blockquote>
+<p>这是第一层：<strong>Agent 作为交付引擎，人仍然是调度中心</strong>。</p>
+<h2 id="第二层：Agent-需要更好的”界面”"><a href="#第二层：Agent-需要更好的”界面”" class="headerlink" title="第二层：Agent 需要更好的”界面”"></a>第二层：Agent 需要更好的”界面”</h2><p>Thariq Shihipar 是 Claude Code 团队工程师。他发现了一个问题：当 Agent 能写出上万 token 的计划时，人类已经没有耐心逐行阅读 Markdown 了。</p>
+<p>他的答案是 <strong>HTML 替代 Markdown</strong> 作为 Agent 与人之间的沟通媒介。这不是格式偏好，而是信息密度问题：</p>
+<ul>
+<li>Markdown 100 行以上几乎没人读</li>
+<li>HTML 可以有卡片、表格、SVG、交互按钮、滑块</li>
+<li>HTML 上传 S3 即可分享，Markdown 需要附件</li>
+<li>HTML 可以做双向互动——调整参数后复制回 Claude Code</li>
+</ul>
+<p>他用 HTML 做了这些事：</p>
+<ul>
+<li><strong>Specs &amp; 规划</strong>：头脑风暴→mockup→实施计划，一套 HTML 文件链</li>
+<li><strong>代码审查</strong>：渲染 diff、注释、流程图，比 GitHub diff 更有效</li>
+<li><strong>设计原型</strong>：HTML 草图→React&#x2F;Swift 等目标语言</li>
+<li><strong>报告研究</strong>：多数据源合成可读报告，支持 SVG 图表</li>
+<li><strong>自定义编辑器</strong>：为特定数据创建一次性编辑器，最后导出为 prompt</li>
+</ul>
+<p>HTML 生成比 Markdown 慢 2-4 倍，但他觉得值得。因为<strong>被阅读的概率大大提高</strong>。</p>
+<blockquote>
+<p>真正的原因是：我害怕不再阅读 Agent 的计划，只好让它独自做决定。HTML 让我重新回到了 loop 里。</p>
+</blockquote>
+<p>这是第二层：<strong>当 Agent 的产出越来越复杂，人需要更丰富的界面来保持 in-the-loop</strong>。</p>
+<h2 id="第三层：Agent-需要一个-runtime"><a href="#第三层：Agent-需要一个-runtime" class="headerlink" title="第三层：Agent 需要一个 runtime"></a>第三层：Agent 需要一个 runtime</h2><p>qc777qc 在搭一个基于 Hermes 的长期自治交易员。设想很简单：它像一个零背景新入职交易员，24 小时不断学习、调研、写策略、做模拟交易、复盘。除非遇到关键决策，否则不要停下来找我。</p>
+<p>听起来合理。但实际跑起来，Agent 完成一轮任务后说”无需老板决策，继续工作”——然后真的停了。</p>
+<p>嘴上说继续，身体很诚实地停在了当前回合。</p>
+<blockquote>
+<p>你以为你缺的是一个更强的 prompt，其实你缺的是一个会按时叫醒它的 runtime。</p>
+</blockquote>
+<p>他最后把机制拆成四层：</p>
+<ol>
+<li><strong>Gateway</strong>：后台运行的进程，到点检查任务列表并启动新 session。没有它，cron 只是写在列表里的空指令。</li>
+<li><strong>Cron</strong>：定义”什么时候叫醒 Agent”。关键区别：<code>every 30m</code>（循环）vs <code>30m</code>（一次性）。</li>
+<li><strong>Heartbeat</strong>：HEARTBEAT.md 文件定义每次唤醒后的标准流程——读取状态→检查阻塞→推进工作→更新状态→写日志。核心规则：没有阻塞就必须实际推进工作。</li>
+<li><strong>状态文件</strong>：Agent session 可能是 fresh 的，不继承聊天上下文。用 current-state.md &#x2F; task-queue.md &#x2F; run-state.md 替代聊天记录。</li>
+</ol>
+<blockquote>
+<p>Agent 可以失去聊天上下文，但不能失去工作上下文。</p>
+</blockquote>
+<p>这是第三层：<strong>长期工作的秘密不是让 Agent 一口气跑更久，而是让它每次醒来都知道自己是谁、在哪、要接着做什么</strong>。</p>
+<h2 id="三层拼在一起"><a href="#三层拼在一起" class="headerlink" title="三层拼在一起"></a>三层拼在一起</h2><p>把这三个故事放在一起看，一条跃迁路径就出来了：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>模式</th>
+<th>人的角色</th>
+<th>Agent 的角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一层</td>
+<td>交付引擎</td>
+<td>调度中心，每次触发</td>
+<td>执行者，等人叫</td>
+</tr>
+<tr>
+<td>第二层</td>
+<td>可视协作</td>
+<td>审核者，通过 HTML 保持 in-the-loop</td>
+<td>产出者，输出人可审阅的 HTML</td>
+</tr>
+<tr>
+<td>第三层</td>
+<td>自治运行</td>
+<td>例外处理者，只在关键决策时介入</td>
+<td>长期工作者，heartbeat 驱动</td>
+</tr>
+</tbody></table>
+<p>Yidabuilds 停在第一层偏上——他有了 Skill&#x2F;Agent&#x2F;Hook 的系统化工作流，但每次还要自己触发。Thariq 在第二层——他通过 HTML 让人和 Agent 的沟通更有效，但 Agent 仍然是一问一答。qc777qc 试图到第三层——让 Agent 在文件系统上接力，不依赖人持续在线。</p>
+<p>三层不是互斥的。一个好的自治 Agent 系统同时需要：</p>
+<ul>
+<li><strong>高效的交付模块</strong>（第一层的 Skill&#x2F;Agent&#x2F;Hook）</li>
+<li><strong>人可审阅的界面</strong>（第二层的 HTML spec）</li>
+<li><strong>不依赖人的 runtime</strong>（第三层的 Gateway&#x2F;Cron&#x2F;Heartbeat&#x2F;状态文件）</li>
+</ul>
+<p>缺失任何一层，Agent 都会在某个地方停下来。</p>
+<p>Yidabuilds 的另一个洞察也值得关注：他做 SEO 半自动化外链系统时发现，<strong>真正值钱的不是代码，而是流程数据</strong>——PostgreSQL 里沉淀了几千个平台的信息、审核规则、成功率、失败原因。代码可以重写，平台经验和失败记录很难凭空生成。</p>
+<p>这和工业软件值钱是同一个逻辑：<strong>知识的复利不在工具本身，而在工具运行过程中沉淀的数据</strong>。</p>
+<p>Agent 也一样。第一层沉淀 Skill，第二层沉淀 HTML spec，第三层沉淀状态文件和运行日志。每一层的沉淀，都是下一层的基础。</p>
+<hr>
+<p><em>参考来源：</em></p>
+<ul>
+<li>Yidabuilds: <a href="https://x.com/yidabuilds/status/2048945366167699684">00后用Claude Code做副业，4个月变现超10万</a></li>
+<li>Thariq Shihipar: <a href="https://x.com/trq212/status/2052809885763747935">Using Claude Code: The Unreasonable Effectiveness of HTML</a></li>
+<li>qc777qc: <a href="https://x.com/qc777qc/status/2055938260103548970">Hermes 24小时工作的秘密：Cron、Gateway 和 Heartbeat</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>AI 实践</category>
+      </categories>
+      <tags>
+        <tag>ai-agent</tag>
+        <tag>claude-code</tag>
+        <tag>autonomy</tag>
+        <tag>side-income</tag>
+      </tags>
+  </entry>
 </search>
