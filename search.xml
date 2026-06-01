@@ -237,4 +237,66 @@
         <tag>side-income</tag>
       </tags>
   </entry>
+  <entry>
+    <title>当 Vibe Coding 不够用时：AI 时代的 CS 知识生存指南</title>
+    <url>/draft-vibe-coding-cs-essentials-2026-06-01/</url>
+    <content><![CDATA[<h1 id="当-Vibe-Coding-不够用时：AI-时代的-CS-知识生存指南"><a href="#当-Vibe-Coding-不够用时：AI-时代的-CS-知识生存指南" class="headerlink" title="当 Vibe Coding 不够用时：AI 时代的 CS 知识生存指南"></a>当 Vibe Coding 不够用时：AI 时代的 CS 知识生存指南</h1><p>Karpathy 说过一句话：<strong>“Vibe coding raised the floor. Agentic engineering raises the ceiling.”</strong></p>
+<p>翻译过来：vibe coding 提高了下限——不会写代码的人也能做出东西了；但 agentic engineering 才能提高上限——真正懂计算机的人，能让 AI 做出远超”随便试试”的成果。</p>
+<p>问题是：从 floor 到 ceiling 之间，到底要补什么？</p>
+<h2 id="一个非-CS-人的自我拷问"><a href="#一个非-CS-人的自我拷问" class="headerlink" title="一个非 CS 人的自我拷问"></a>一个非 CS 人的自我拷问</h2><p>苏氨酸（Yitong）在公众号写了一篇文章，标题直戳痛点：<strong>“和科班程序员划了两小时重点：当 vibe coding 不够用时，我们要如何学习软件工程？”</strong></p>
+<p>她的经历很有代表性：</p>
+<ul>
+<li>会用 Claude Code、Codex 做项目，但遇到复杂问题就卡住</li>
+<li>身边专业开发者用同样的工具，产出完全不同——他们知道每一步在干什么</li>
+<li>想系统学 CS，但科班路线动辄上千小时，求职路线又是八股面经</li>
+</ul>
+<p>她的解法：拉了一个北大图灵班的朋友 V，对着 csdiy.wiki 划重点。目标是<strong>找到 AI 时代最关键的 20%</strong>。</p>
+<h2 id="划重点：十个模块，100-小时"><a href="#划重点：十个模块，100-小时" class="headerlink" title="划重点：十个模块，100 小时"></a>划重点：十个模块，100 小时</h2><p>V 划出的重点不是”精简版 CS 课表”，而是一套<strong>面向 AI 使用者</strong>的知识体系：</p>
+<h3 id="必须动手的"><a href="#必须动手的" class="headerlink" title="必须动手的"></a>必须动手的</h3><ul>
+<li><strong>命令行与工具</strong>（Git&#x2F;SSH&#x2F;Tmux&#x2F;Docker）：AI 帮你配环境时，你至少得看懂它在干什么</li>
+<li><strong>数据结构</strong>：树（深度&#x3D;log节点数）、哈希表（O(1) 查询的原理）、排序——这些是理解 AI 生成代码的基础</li>
+<li><strong>网络</strong>：装个 Wireshark 抓包，写个 TCP 聊天程序。能通就算过关</li>
+<li><strong>体系结构</strong>：用 GDB 逐行执行，看每条指令在改哪个寄存器。核心是建立<strong>边界意识</strong>——什么是计算机能做的，什么是不能做的</li>
+</ul>
+<h3 id="知道概念就行的"><a href="#知道概念就行的" class="headerlink" title="知道概念就行的"></a>知道概念就行的</h3><ul>
+<li><strong>软件工程</strong>：CI&#x2F;CD、A&#x2F;B Testing、IaC——当词典查，项目中再理解</li>
+<li><strong>编译原理</strong>：上下文无关语法（HTML 标签就是经典例子）</li>
+<li><strong>分布式系统</strong>：Raft 的”过半存活”原则</li>
+<li><strong>Web 开发</strong>：React&#x2F;Vue 的组件、状态、路由——能看懂框架代码，不需要手写</li>
+</ul>
+<h3 id="学习方法的关键洞见"><a href="#学习方法的关键洞见" class="headerlink" title="学习方法的关键洞见"></a>学习方法的关键洞见</h3><ol>
+<li><strong>螺旋式学习</strong>：第一遍不求全懂，做项目遇到问题再回来补</li>
+<li><strong>AI 写完你”抄一遍”</strong>：不是抄答案，是看懂 AI 在写什么、为什么这样写</li>
+<li><strong>通过 CoT 学习</strong>：AI 配环境时的思维链就是最好的教程</li>
+<li><strong>估计 100 小时过一遍</strong>：不是 100 小时精通，而是建立概念地图</li>
+</ol>
+<h2 id="这和-Agent-工作流有什么关系？"><a href="#这和-Agent-工作流有什么关系？" class="headerlink" title="这和 Agent 工作流有什么关系？"></a>这和 Agent 工作流有什么关系？</h2><p>在我的 wiki 里，这组知识串起了一条清晰的线索：</p>
+<ul>
+<li><strong>Vibe coding</strong> 是起点——你不需要懂 CS 也能做出东西</li>
+<li><strong>CS 核心知识</strong> 是桥梁——知道 AI 的边界，能读懂代码，能评估输出</li>
+<li><strong>Agentic engineering</strong> 是终点——用 Agent 的思维设计系统，让 AI 执行</li>
+</ul>
+<p>这条线索也解释了为什么 Karpathy 从 vibe coding 的提出者，变成了 agentic engineering 的推动者。不是 vibe coding 不行，而是它只是第一层。</p>
+<h2 id="值得记住的一句话"><a href="#值得记住的一句话" class="headerlink" title="值得记住的一句话"></a>值得记住的一句话</h2><blockquote>
+<p>学完至少能知道<strong>什么是计算机能做到的、什么是不能做到的</strong>，知道 AI 的边界在哪里，不至于 vibe coding 的时候完全失控。</p>
+</blockquote>
+<p>100 小时，螺旋式，从项目中学。这不是要你变成专业开发，而是让你从一个”只会 vibe coding”的人，变成一个<strong>能指挥 AI 的人</strong>。</p>
+<hr>
+<p><strong>参考来源</strong></p>
+<ul>
+<li>苏氨酸 &amp; Vincent：<a href="https://mp.weixin.qq.com/s/ldxhLglQ4xv7Dj4ugRX3QA">和科班程序员划了两小时重点：当vibe coding不够用时，我们要如何学习软件工程？</a></li>
+<li>CS 科班自学指南：<a href="https://csdiy.wiki/CS%E5%AD%A6%E4%B9%A0%E8%A7%84%E5%88%92/">csdiy.wiki</a></li>
+<li>Karpathy @ Sequoia AI Ascent 2026：Vibe coding raised the floor. Agentic engineering raises the ceiling.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>AI学习</category>
+      </categories>
+      <tags>
+        <tag>vibe-coding</tag>
+        <tag>cs-essentials</tag>
+        <tag>ai-learning</tag>
+        <tag>karpathy</tag>
+      </tags>
+  </entry>
 </search>

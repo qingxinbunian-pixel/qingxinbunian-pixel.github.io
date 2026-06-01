@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yourname.github.io/draft-vibe-coding-cs-essentials-2026-06-01/</loc>
+    
+    <lastmod>2026-06-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yourname.github.io/agent-autonomy-three-layers-2026-05-26/</loc>
     
     <lastmod>2026-05-26</lastmod>
@@ -134,6 +143,34 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://yourname.github.io/tags/vibe-coding/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourname.github.io/tags/cs-essentials/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourname.github.io/tags/ai-learning/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourname.github.io/tags/karpathy/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -152,6 +189,13 @@
   
   <url>
     <loc>https://yourname.github.io/categories/AI-%E5%AE%9E%E8%B7%B5/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourname.github.io/categories/AI%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
