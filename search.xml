@@ -299,4 +299,53 @@
         <tag>karpathy</tag>
       </tags>
   </entry>
+  <entry>
+    <title>当本地Agent终于能说话了：扣子3.0的多Agent协作实验</title>
+    <url>/draft-local-agents-collaborate-coze3-2026-06-02/</url>
+    <content><![CDATA[<h1 id="当本地Agent终于能说话了：扣子3-0的多Agent协作实验"><a href="#当本地Agent终于能说话了：扣子3-0的多Agent协作实验" class="headerlink" title="当本地Agent终于能说话了：扣子3.0的多Agent协作实验"></a>当本地Agent终于能说话了：扣子3.0的多Agent协作实验</h1><p>花叔这篇文章让我眼前一亮——不是因为他用了什么新模型，而是因为他解决了我一直以来的一个痛点：本地开着 Claude Code、Codex、OpenClaw 好几个窗口，各跑各的，互不通信，想用 A 的结果给 B，得手动切窗口复制上下文。</p>
+<p>扣子 3.0 给了个解法：<strong>coze-bridge</strong>。</p>
+<h2 id="coze-bridge：让本地Agent不再是孤岛"><a href="#coze-bridge：让本地Agent不再是孤岛" class="headerlink" title="coze-bridge：让本地Agent不再是孤岛"></a>coze-bridge：让本地Agent不再是孤岛</h2><p>coze-bridge 是跑在用户电脑上的一个小服务，能自动发现本地已装的 coding agent——Claude Code、Codex CLI 这些。三步走完：生成连接命令 → 本地执行 → 自动识别。</p>
+<p>接上之后，这些本来各开各窗口的 agent，就被归到了同一个项目里。你 @ 谁，谁就接话干活，而且<strong>彼此看得见说了什么</strong>。</p>
+<p>这不是小进步。之前的多 agent 协作，要么是 Opus 4.8 的 Dynamic Workflows 那条路——靠脚本把上百个子 agent 编排起来并行，追求速度和规模；要么就是各跑各的，人当中间人来回倒腾上下文。</p>
+<p>扣子 3.0 走了条中间路：<strong>人像带团队一样 @ agent 接力干活，上下文自动在项目内流转</strong>。零代码，不需要写脚本。</p>
+<h2 id="一条完整的流水线"><a href="#一条完整的流水线" class="headerlink" title="一条完整的流水线"></a>一条完整的流水线</h2><p>花叔用 6 个 agent 跑通了一个 AI for Science 研究项目：</p>
+<ol>
+<li><strong>@codex</strong> 调研——搜集整理资料，打包成研究包</li>
+<li><strong>@阿链</strong> 写稿——用花叔自制的写作技能生成公众号文</li>
+<li><strong>@自媒体运营达人</strong> 换平台——同一篇内容改写为小红书风格</li>
+<li><strong>@codex</strong> 做 PPT——用内置 image-gen 批量生图，拼成 10 页 pptx</li>
+</ol>
+<p>关键不是每个 agent 做了什么，而是<strong>从调研到写稿到做 PPT，上下文一直在同一个项目里</strong>。零次切窗口，零次手动复制粘贴。</p>
+<h2 id="更让我意外的是远程遥控"><a href="#更让我意外的是远程遥控" class="headerlink" title="更让我意外的是远程遥控"></a>更让我意外的是远程遥控</h2><p>花叔在外面，手机上对绑定的 codex 说了一句”帮我把电脑里今天新修订的合同发给我”——没说文件名，没说在哪个文件夹。</p>
+<p>codex 真的伸进了他家里那台 Mac，翻本地文件，找到了合同。</p>
+<p>这种”活留在电脑、人走到哪都够得着”的体感，之前确实没怎么有过。虽然网络从 WebSocket 退到了 HTTPS，有点延迟，但事办成了。</p>
+<p>这也延伸了 [[agent-autonomy]] 的边界——之前我们讨论的自治，是 Agent 自己按时醒来干活；现在加了一个新维度：<strong>人不在电脑前，也能远程调度本地 Agent</strong>。</p>
+<h2 id="两条路线，一个方向"><a href="#两条路线，一个方向" class="headerlink" title="两条路线，一个方向"></a>两条路线，一个方向</h2><p>回到更宏观的视角：把一堆 agent 协同好，正在变成比单纯堆智能更要紧的事。</p>
+<ul>
+<li><strong>脚本编排路线</strong>（Dynamic Workflows）：快、大、自动，但门槛高，上下文隔离</li>
+<li><strong>项目制协作路线</strong>（扣子 3.0）：慢、小、人工驱动，但门槛低，上下文共享</li>
+</ul>
+<p>两条路不是替代关系，而是互补：大规模并行用脚本编排，复杂但需人把关的流水线用项目制协作。</p>
+<p>花叔自己的总结很到位：<strong>与其干等一个什么都会的万能 AI，不如现在就带一支各有专长、@一下就接力上的小队。</strong></p>
+<h2 id="还不完美"><a href="#还不完美" class="headerlink" title="还不完美"></a>还不完美</h2><p>当然，问题也实打实：</p>
+<ul>
+<li>本地 agent 延迟较高，尤其远程场景</li>
+<li>高权限带来安全顾虑——本地 agent 能读写文件和执行命令，多人协作时风险更大</li>
+<li>套餐限制——89 元&#x2F;月最多接 3 个本地 agent</li>
+</ul>
+<p>但雏形已经能用了，而且是用在”把一堆本地 agent 攥在自己手里”的人身上。这点比什么都难得。</p>
+<hr>
+<p><em>本文基于花叔原文整理，交叉参考 wiki 中的 [[multi-agent-collaboration]]、[[agent-workflow]]、[[agent-autonomy]] 等概念页面。</em></p>
+]]></content>
+      <categories>
+        <category>AI实践</category>
+      </categories>
+      <tags>
+        <tag>AI Agent</tag>
+        <tag>多智能体协作</tag>
+        <tag>扣子</tag>
+        <tag>Codex</tag>
+        <tag>Claude Code</tag>
+      </tags>
+  </entry>
 </search>

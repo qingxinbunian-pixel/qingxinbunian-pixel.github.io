@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yourname.github.io/draft-local-agents-collaborate-coze3-2026-06-02/</loc>
+    
+    <lastmod>2026-06-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yourname.github.io/draft-vibe-coding-cs-essentials-2026-06-01/</loc>
     
     <lastmod>2026-06-01</lastmod>
@@ -171,6 +180,34 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://yourname.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourname.github.io/tags/%E6%89%A3%E5%AD%90/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourname.github.io/tags/Codex/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourname.github.io/tags/Claude-Code/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -196,6 +233,13 @@
   
   <url>
     <loc>https://yourname.github.io/categories/AI%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourname.github.io/categories/AI%E5%AE%9E%E8%B7%B5/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
