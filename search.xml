@@ -348,4 +348,47 @@
         <tag>Claude Code</tag>
       </tags>
   </entry>
+  <entry>
+    <title>从 VisiCalc 到 Dynamic Workflows：AI 如何一步步吞掉知识工作的 Task</title>
+    <url>/visicalc-to-dynamic-workflows-2026-06-04/</url>
+    <content><![CDATA[<h1 id="从-VisiCalc-到-Dynamic-Workflows：AI-如何一步步吞掉知识工作的-Task"><a href="#从-VisiCalc-到-Dynamic-Workflows：AI-如何一步步吞掉知识工作的-Task" class="headerlink" title="从 VisiCalc 到 Dynamic Workflows：AI 如何一步步吞掉知识工作的 Task"></a>从 VisiCalc 到 Dynamic Workflows：AI 如何一步步吞掉知识工作的 Task</h1><p>上周两条消息同时出现在我的信息流里，拼在一起恰好是 AI 与知识工作关系的完整图景。</p>
+<h2 id="一条来自-Claude-Code：动态工作流正式发布"><a href="#一条来自-Claude-Code：动态工作流正式发布" class="headerlink" title="一条来自 Claude Code：动态工作流正式发布"></a>一条来自 Claude Code：动态工作流正式发布</h2><p>Thariq Shihipar 和 Sid Bidasaria 在 Claude Blog 发表了”动态工作流”的完整文章。简单说，Claude Code 现在可以<strong>根据你的任务自动生成一个自定义脚手架（harness），编排多个子智能体并行工作</strong>。</p>
+<p>为什么需要这个？因为单个 context window 跑长时间任务会遇到三种失败模式：</p>
+<ol>
+<li><strong>Agentic laziness</strong>——复杂任务做了一半就宣称完成</li>
+<li><strong>Self-preferential bias</strong>——倾向于认可自己的输出</li>
+<li><strong>Goal drift</strong>——经过多轮压缩后，原始目标逐渐偏离</li>
+</ol>
+<p>动态工作流的解法是：<strong>让多个独立的 Claude 实例各管一段</strong>，每个有自己的 context window 和聚焦目标。它归纳了六种编排模式——分类路由、扇出合成、对抗验证、生成过滤、锦标赛、循环完成——并在迁移重构、深度研究、根因调查、大规模分诊等场景下验证了效果。</p>
+<p>Bun 项目用工作流从 Zig 重写为 Rust，大概是迄今最大规模的实锤案例。</p>
+<h2 id="另一条来自-Benedict-Evans：AI-如同-1997-年的互联网"><a href="#另一条来自-Benedict-Evans：AI-如同-1997-年的互联网" class="headerlink" title="另一条来自 Benedict Evans：AI 如同 1997 年的互联网"></a>另一条来自 Benedict Evans：AI 如同 1997 年的互联网</h2><p>前 a16z 合伙人 Benedict Evans 在 Lenny’s Podcast 说了一句惹争议的话：<strong>AI 和互联网、移动互联网一样大，也只和它们一样大。</strong></p>
+<p>这不是在贬低 AI。他的意思是：1997 年的人也知道互联网会改变世界，但没人能预见 Google、亚马逊和社交网络会怎样分出胜负。我们今天对 AI 也一样——<strong>早期平台迁移最危险的错误，是过早把赢家和商业模式说死。</strong></p>
+<p>更关键的是他反复拆的一个区别：<strong>task 和 job 不是一回事。</strong></p>
+<p>电梯操作员的工作几乎就是拉杆、开门、停到楼层，按钮自动化后那份工作确实消失了。但多数知识岗位没那么简单。你雇 McKinsey 不是为了拿一份 75 页 PPT——客户付钱买的是走遍企业、找到人没说出口的阻力、处理部门之间的博弈。</p>
+<p><strong>AI 先压缩可描述、可验收、可复制的 task，剩下的工作会向判断、协调和选择移动。</strong></p>
+<h2 id="两条消息的交汇点"><a href="#两条消息的交汇点" class="headerlink" title="两条消息的交汇点"></a>两条消息的交汇点</h2><p>动态工作流正好展示了 AI 吞掉 task 的最新一步。以前你需要自己写脚本编排多个 Claude 实例，现在描述一下任务，AI 自动生成脚手架。Bun 重写、安全审查、根因分析——这些曾经需要高级工程师手动拆解的 task，正在被自动化。</p>
+<p>但 Benedict Evans 的框架提醒我们：<strong>task 被压缩 ≠ job 被替代。</strong> 他拿会计行业举了个经典例子——从加法机到 Excel 到云软件，会计工具一轮轮变强，美国会计岗位数量仍长期上升。因为工具变强 → 效率提升 → 产能释放 → 转向更多客户和项目。投行也一样：Excel 没有让高盛助理周五中午下班，反而让他们建更多模型、跑更多情景。</p>
+<p>动态工作流让 agent 的 task 执行能力再上一级，但”要写什么代码””该不该做这个功能””客户到底想要什么”——这些判断层面的 job 反而在升值。</p>
+<h2 id="软件行业：第一个撞上变化的领域"><a href="#软件行业：第一个撞上变化的领域" class="headerlink" title="软件行业：第一个撞上变化的领域"></a>软件行业：第一个撞上变化的领域</h2><p>Benedict 用 VisiCalc 做类比特别精准：会计看到电子表格，立刻感到一周的表格计算被压到 30 秒；律师和记者看着同一台电脑，只觉得”让会计看看”。今天的软件工程师就是当年的会计——Claude Code、Cursor、Copilot 直接打进他们的主流程。</p>
+<p>“会有 VisiCalc 之前和之后，也会有 Claude Code 之前和之后。”</p>
+<p>但他接着补了一刀：<strong>他不相信”人人自己 vibe code 一个 Stripe”。</strong> 代码行数被生成，不等于产品判断、客户理解、上线运维、权限合规和商业分发一起消失。更可能发生的是，软件供给继续膨胀，工程师的手从键盘上挪开一部分，脑子要更早进入需求、架构、验收和系统边界。</p>
+<h2 id="该怎么站位"><a href="#该怎么站位" class="headerlink" title="该怎么站位"></a>该怎么站位</h2><p>Benedict 的建议很朴素，也很实用：</p>
+<blockquote>
+<p>完全潜入进去，出来时理解今天能用它做什么、它怎样改变事情、你怎样成为一个更好的候选人。</p>
+</blockquote>
+<p>AI 时代最危险的姿势不是判断错了某家公司，而是<strong>拒绝获得一手手感</strong>。亲手把工具用进自己的材料、研究、代码、客户分析里，知道它在哪些地方会胡说，在哪些地方能省掉两小时，在哪些地方必须人来验收。</p>
+<p>手感比立场更早提醒你下一步该学什么。</p>
+<hr>
+<p><em>本文综合自 Claude Blog 动态工作流文章和 Lenny’s Podcast 对 Benedict Evans 的访谈，关联 wiki 页面：[[dynamic-workflows]]、[[ai-impact-on-jobs]]、[[benedict-evans]]</em></p>
+]]></content>
+      <categories>
+        <category>AI</category>
+      </categories>
+      <tags>
+        <tag>claude-code</tag>
+        <tag>ai</tag>
+        <tag>agent</tag>
+        <tag>employment</tag>
+      </tags>
+  </entry>
 </search>
