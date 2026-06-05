@@ -391,4 +391,121 @@
         <tag>employment</tag>
       </tags>
   </entry>
+  <entry>
+    <title>从 Vibe Coding 到 Goal Coding：AI 编程的范式转换，以及 Markdown 和 HTML 的新分工</title>
+    <url>/goal-coding-markdown-html-2026-06-05/</url>
+    <content><![CDATA[<h1 id="从-Vibe-Coding-到-Goal-Coding：AI-编程的范式转换，以及-Markdown-和-HTML-的新分工"><a href="#从-Vibe-Coding-到-Goal-Coding：AI-编程的范式转换，以及-Markdown-和-HTML-的新分工" class="headerlink" title="从 Vibe Coding 到 Goal Coding：AI 编程的范式转换，以及 Markdown 和 HTML 的新分工"></a>从 Vibe Coding 到 Goal Coding：AI 编程的范式转换，以及 Markdown 和 HTML 的新分工</h1><p>过去一年，大多数人用 AI 写代码的方式是：你说一句，它写一段；你说”这有 bug”，它改一轮；你说”继续”，它再写一段。客气点叫 Vibe Coding，精准点叫”许愿”——你把 AI 当许愿池。</p>
+<p>但 2026 年 5 月，事情悄然变了。OpenAI 的 Codex 和 Anthropic 的 Claude Code 几乎同时推出了 <code>/goal</code> 命令。过去你告诉 AI”做下一步”；现在你告诉它终点在哪。</p>
+<p>比如：「把 checkout 的 p95 延迟压到 120ms 以下，跑通基准测试，现有功能不许回归。」</p>
+<p>然后你合上电脑。它自己规划、自己写、自己测、发现不对自己修——循环到你定义的终点被达成为止。</p>
+<p>刘小排把这个转变叫做 <strong>Goal Coding</strong>，并断言：一问一答式 Vibe Coding 的时代，结束了。</p>
+<h2 id="三个无人值守的-goal-案例"><a href="#三个无人值守的-goal-案例" class="headerlink" title="三个无人值守的 &#x2F;goal 案例"></a>三个无人值守的 &#x2F;goal 案例</h2><p>这个转变不是概念先行，而是案例先行。</p>
+<p><strong>OpenAI 的 Derrick Choi</strong> 给 Codex 一个空 repo，让它从零做设计工具。跑了约 25 小时，吃了约 1300 万 tokens，吐出约 3 万行代码。全程无人值守。</p>
+<p><strong>a16z 的 Andrew Chen</strong> 把它丢在 Mac 设备驱动项目上——又底层又脏的活儿——人走了 14 个小时回来，还在迭代。</p>
+<p><strong>Claire Vo</strong> 的案例更有意思：她用 &#x2F;goal 清 Sentry 报错、把 3900 封邮件干到 68 封、整理 Linear 任务。不是写代码，是一切可验证的长任务。</p>
+<h2 id="Claude-Code-vs-Codex：实习生-vs-项目经理"><a href="#Claude-Code-vs-Codex：实习生-vs-项目经理" class="headerlink" title="Claude Code vs Codex：实习生 vs 项目经理"></a>Claude Code vs Codex：实习生 vs 项目经理</h2><p>Claude Code 和 Codex 都有 &#x2F;goal，但机制不同。</p>
+<p>Claude Code 是”声明式验收”——你写完成条件，每轮结束后一个小模型当裁判，达标了自动停。像请了个实习生看报告——你说完成了，它信了。</p>
+<p>Codex 做得更重——目标是持久的 thread state，有 pause &#x2F; resume &#x2F; clear，有预算管控，有完整生命周期。像配了个项目经理——盯预算、盯进度、盯合同。</p>
+<p>刘小排的判断：Codex 的 &#x2F;goal 更好用，更像把 &#x2F;goal 当一等公民来做的。</p>
+<h2 id="核心能力变了：从写-prompt-到定义”完成”"><a href="#核心能力变了：从写-prompt-到定义”完成”" class="headerlink" title="核心能力变了：从写 prompt 到定义”完成”"></a>核心能力变了：从写 prompt 到定义”完成”</h2><p>Vibe Coding 时代，核心能力是写 prompt——谁能描述得更清楚，谁就得到更好的输出。</p>
+<p>Goal Coding 时代，核心能力变了：<strong>谁能把”什么叫做完”定义清楚</strong>。</p>
+<p>这与 Karpathy 在红杉 Ascent 2026 的判断一脉相承：Vibe coding raised the floor, Agentic engineering raises the ceiling。Vibe Coding 是下限，Goal Coding（也就是 Agentic Engineering）是上限。</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Vibe Coding</th>
+<th>Goal Coding</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>交互模式</td>
+<td>一问一答</td>
+<td>声明终点</td>
+</tr>
+<tr>
+<td>人机分工</td>
+<td>人陪 AI 加班</td>
+<td>人定义”完成”，AI 自主执行</td>
+</tr>
+<tr>
+<td>适合任务</td>
+<td>探索、小活儿</td>
+<td>可验收的长任务</td>
+</tr>
+<tr>
+<td>核心能力</td>
+<td>写 prompt</td>
+<td>定义”什么叫做完”</td>
+</tr>
+<tr>
+<td>人的角色</td>
+<td>逐步指挥</td>
+<td>目标设定 + 验收</td>
+</tr>
+</tbody></table>
+<h2 id="Markdown-数据层，HTML-展示层"><a href="#Markdown-数据层，HTML-展示层" class="headerlink" title="Markdown &#x3D; 数据层，HTML &#x3D; 展示层"></a>Markdown &#x3D; 数据层，HTML &#x3D; 展示层</h2><p>Goal Coding 让 AI 自主产出了更多内容，但内容产出之后呢？</p>
+<p>歸藏（运营”歸藏的 AI 工具箱”公众号）从产品实践角度提出了一个清晰的分工模型：<strong>Markdown 是 AI 的数据层，HTML 是 AI 的展示层</strong>。</p>
+<h3 id="Markdown：AI-的-Schelling-Point"><a href="#Markdown：AI-的-Schelling-Point" class="headerlink" title="Markdown：AI 的 Schelling Point"></a>Markdown：AI 的 Schelling Point</h3><p>Obsidian 作者有句话很准：.md 正在成为 AI 文件交互里的 Schelling Point——没有人强制规定，但大家会自然聚到同一个选择上。</p>
+<p>原因朴素：</p>
+<ul>
+<li><strong>轻量</strong>：纯文本，模型读写都轻</li>
+<li><strong>结构</strong>：标题、列表、表格、代码块、链接都能表达</li>
+<li><strong>开放</strong>：不像 .docx 包进复杂格式，人能直接打开，AI 能直接处理，版本管理和 diff 干净</li>
+</ul>
+<p>在歸藏的 CodePilot 里，记忆就是一组 Markdown 文件。AI 往里写，AI 从里读，人也能打开改。Widget 还可以把 Markdown 当数据来源——文件变了，组件展示也跟着变。</p>
+<p>这时候 Markdown 就不只是”拿来读的一篇文章”，而是<strong>一种很轻的本地数据层</strong>：人能看，AI 能读，工具也能基于它生成新的界面和交互。</p>
+<h3 id="HTML：AI-的展示层"><a href="#HTML：AI-的展示层" class="headerlink" title="HTML：AI 的展示层"></a>HTML：AI 的展示层</h3><p>另一端是 HTML。</p>
+<p>歸藏开源了 PPT Skill，生成网页形式的演示文稿，25 天到 1 万 star。Claude Code 团队也在系统论证 HTML 替代 Markdown 的优势：信息密度更高，更容易做视觉层级，更适合展示图表、布局、交互。</p>
+<p>Markdown 适合沉淀内容，但一长就难读。HTML 反过来——它用排版、空间、颜色、图表和交互，把信息组织成”可以被消费的东西”。不是更适合存事实，而是更适合让人理解事实。</p>
+<h3 id="三层分工"><a href="#三层分工" class="headerlink" title="三层分工"></a>三层分工</h3><table>
+<thead>
+<tr>
+<th>层次</th>
+<th>格式</th>
+<th>角色</th>
+<th>典型工具</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据层</td>
+<td>Markdown</td>
+<td>沉淀、版本管理、AI 读写</td>
+<td>CodePilot, Obsidian</td>
+</tr>
+<tr>
+<td>展示层</td>
+<td>HTML</td>
+<td>阅读、分享、交互</td>
+<td>PPT Skill, Claude Code</td>
+</tr>
+<tr>
+<td>消费层</td>
+<td>Markdown + HTML</td>
+<td>手机阅读</td>
+<td>即览</td>
+</tr>
+</tbody></table>
+<p>底层用 Markdown 留着，干净、可读、可版本管理。需要给人看时再渲染成 HTML。</p>
+<h2 id="消费层的缺口：手机上打不开"><a href="#消费层的缺口：手机上打不开" class="headerlink" title="消费层的缺口：手机上打不开"></a>消费层的缺口：手机上打不开</h2><p>但这条链路在手机上断了。</p>
+<p>你在微信里收到一份 AI 生成的报告、一个网页 PPT、一个 Markdown 文档——点不开、显示源码、样式坏掉，或者要在几个 App 之间来回跳。桌面端有浏览器、有编辑器，手机端几乎什么都没有。</p>
+<p>歸藏做了「即览」来补这个缺口——iOS 上的 Markdown&#x2F;HTML 阅读器，只做三件事：打开、读、收着。不做编辑，不接 AI，不做云同步。支持 .md、.html、.zip，本地渲染，动态脚本默认关闭。</p>
+<p>即览不是孤立的小工具。它接在 PPT Skill（生产端）和 CodePilot（协作端）后面，补的是消费端。前两件事偏生产，即览偏消费。AI 已经能生成 Markdown 和 HTML，但如果这些文件一到手机上就断掉，前面的体验再顺也没有真正落到人手里。</p>
+<h2 id="从执行到定义"><a href="#从执行到定义" class="headerlink" title="从执行到定义"></a>从执行到定义</h2><p>Goal Coding 和 Markdown&#x2F;HTML 分工，看似两个不同的话题，其实指向同一个变化：<strong>人的角色从执行者变成定义者</strong>。</p>
+<p>Goal Coding 里，你不再逐步指挥 AI，而是定义”什么叫做完”。Markdown&#x2F;HTML 分工里，你不再纠结格式，而是定义”什么是数据、什么是展示”。即览的消费层缺口里，你不再操心怎么打开文件，而是专注”内容本身值不值得读”。</p>
+<p>AI 越能自主执行，人就越需要想清楚：目标是什么、边界在哪、什么算完成。这不是偷懒，而是更高级的劳动——Benedict Evans 说得好：AI 先压缩可描述、可验收、可复制的任务，剩下的工作会向判断、协调和选择移动。</p>
+<p>Goal Coding 时代已经来了。接下来的问题不是 AI 能不能做，而是你能不能定义清楚”什么叫做完”。</p>
+]]></content>
+      <categories>
+        <category>AI编程</category>
+      </categories>
+      <tags>
+        <tag>claude-code</tag>
+        <tag>vibe-coding</tag>
+        <tag>goal-coding</tag>
+        <tag>markdown</tag>
+        <tag>html</tag>
+        <tag>codex</tag>
+      </tags>
+  </entry>
 </search>
