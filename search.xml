@@ -508,4 +508,102 @@
         <tag>codex</tag>
       </tags>
   </entry>
+  <entry>
+    <title>从Vibe Coding到Loopcraft：AI工程的三次范式跃迁</title>
+    <url>/loopcraft-paradigm-shift-2026-06-14/</url>
+    <content><![CDATA[<h1 id="从Vibe-Coding到Loopcraft：AI工程的三次范式跃迁"><a href="#从Vibe-Coding到Loopcraft：AI工程的三次范式跃迁" class="headerlink" title="从Vibe Coding到Loopcraft：AI工程的三次范式跃迁"></a>从Vibe Coding到Loopcraft：AI工程的三次范式跃迁</h1><p>2026年，AI工程正经历一条清晰的演进路径：从逐条提示，到声明终点，再到设计循环。这不是概念炒作——Recursive SI和微软Arbor已在真实基准上产出SOTA结果，DiffusionGemma让推理成本骤降4倍，而Claude Fable 5的静默降级事件则暴露了一个更深层的问题：<strong>你不能信任任何一个模型提供商的行为稳定性</strong>。</p>
+<p>这条演进路径有三个清晰的阶段，每个阶段解决的核心问题不同。</p>
+<h2 id="第一阶段：Vibe-Coding——“许愿池”时代"><a href="#第一阶段：Vibe-Coding——“许愿池”时代" class="headerlink" title="第一阶段：Vibe Coding——“许愿池”时代"></a>第一阶段：Vibe Coding——“许愿池”时代</h2><p>Karpathy在2025年初提出的概念：不深入理解代码逻辑，靠直觉和AI辅助写代码。你说一句，它写一段；你说”有bug”，它改一轮；你说”继续”，它再写一段。</p>
+<p>刘小排的描述更精准：<strong>你只不过把AI当成了一个许愿池</strong>。</p>
+<p>Vibe Coding适合探索和小活儿，但任务一长，你就变成了陪AI加班的人。核心瓶颈：<strong>人的注意力和时间</strong>。</p>
+<h2 id="第二阶段：Goal-Coding——声明终点"><a href="#第二阶段：Goal-Coding——声明终点" class="headerlink" title="第二阶段：Goal Coding——声明终点"></a>第二阶段：Goal Coding——声明终点</h2><p>2026年5月，OpenAI的Codex和Anthropic的Claude Code几乎同时推出<code>/goal</code>命令，范式开始转换。</p>
+<p>过去你告诉AI”做下一步”。现在你告诉它终点在哪：</p>
+<blockquote>
+<p>把checkout的p95延迟压到120ms以下，跑通基准测试，现有功能不许回归。</p>
+</blockquote>
+<p>然后你合上电脑，去喝咖啡。它自己规划、自己写、自己测、发现不对自己修——循环到你定义的终点被达成为止。</p>
+<p>两个实现有微妙差异：</p>
+<ul>
+<li><strong>Claude Code &#x2F;goal</strong>：声明式验收，小模型当裁判，达标自动停——像请了个实习生</li>
+<li><strong>Codex &#x2F;goal</strong>：持久thread state，pause&#x2F;resume&#x2F;clear，预算管控——像配了个项目经理</li>
+</ul>
+<p>核心能力转变：<strong>从写prompt到定义”什么叫做完”</strong>。</p>
+<h2 id="第三阶段：Loopcraft——循环堆叠"><a href="#第三阶段：Loopcraft——循环堆叠" class="headerlink" title="第三阶段：Loopcraft——循环堆叠"></a>第三阶段：Loopcraft——循环堆叠</h2><p>这是最新的范式迁移，焦点从”哪个模型最强”转向”谁来编排循环”。</p>
+<p>Loopcraft的核心洞察：人类逐条提示智能体是系统瓶颈，真正的杠杆在于设计自运行的循环架构。这不仅是Goal Coding的延伸——Goal Coding解决”如何定义完成”，Loopcraft解决”如何让循环持续可靠运行”。</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>传统提示</th>
+<th>Goal Coding</th>
+<th>Loopcraft</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>交互模式</td>
+<td>一问一答</td>
+<td>声明终点</td>
+<td>设计循环架构</td>
+</tr>
+<tr>
+<td>人的角色</td>
+<td>逐步指挥</td>
+<td>目标设定+验收</td>
+<td>架构设计，退出内层循环</td>
+</tr>
+<tr>
+<td>扩展瓶颈</td>
+<td>人注意力</td>
+<td>单目标验收</td>
+<td>循环可靠性</td>
+</tr>
+</tbody></table>
+<h2 id="咸教训：Loopcraft的理论基石"><a href="#咸教训：Loopcraft的理论基石" class="headerlink" title="咸教训：Loopcraft的理论基石"></a>咸教训：Loopcraft的理论基石</h2><p>Rich Sutton的苦教训（Bitter Lesson）指出：随算力扩展的通用方法终胜人工知识。2026年提出的”咸教训”（Salty Lesson）将其翻译到智能体域：<strong>别亲手修东西，构建随智能体数量扩展的目标-编排系统</strong>。</p>
+<p>咸教训比苦教训更精妙的地方在于：它是<strong>双向的</strong>。早期下沉一层循环可获得可靠性，后期上浮一层循环可获取杠杆。</p>
+<p>但这里有个被回避的核心矛盾：<strong>上浮循环的前提是底层循环可信</strong>。SciConBench显示前沿智能体在专家综合任务上得零分，Agents’ Last Exam在最难层级同样归零。告诉人们”爬上去”的忠告，仅在你脚下的梯子不会断时成立。</p>
+<h2 id="循环正在变便宜"><a href="#循环正在变便宜" class="headerlink" title="循环正在变便宜"></a>循环正在变便宜</h2><p>Loopcraft之所以在2026年成为可行方向，不仅因为范式认知成熟，更因为<strong>循环的成本在快速下降</strong>：</p>
+<ul>
+<li><strong>DiffusionGemma</strong>：DeepMind将扩散与Gemma 4架构融合，推理速度比同系列快4倍——循环每轮迭代成本大幅下降</li>
+<li><strong>Unsloth Gemma 4 MTP GGUFs</strong>：本地推理提速1.4-2.2倍——降低对云端API的依赖</li>
+<li><strong>Recursive SI</strong>：在三个公开基准上达成SOTA，证明窄域高反馈循环已可产出实际成果</li>
+<li><strong>微软Arbor</strong>：持久化假设树精炼，声称六项研究任务超越Codex和Claude Code</li>
+</ul>
+<p>循环越便宜，堆叠越可行。这是经济学原理在AI工程中的直接体现。</p>
+<h2 id="静默降级：循环架构的反面约束"><a href="#静默降级：循环架构的反面约束" class="headerlink" title="静默降级：循环架构的反面约束"></a>静默降级：循环架构的反面约束</h2><p>就在循环架构理论走向成熟的同时，一个现实问题给了所有人当头一棒：<strong>Anthropic悄悄削弱了Claude Fable 5在AI研究场景的能力</strong>。</p>
+<p>被曝光后一天内回退。争议焦点不是”该不该有安全护栏”，而是<strong>护栏是否可以不透明</strong>。安全措施正常，但暗中进行能力削减违反用户-提供商契约。</p>
+<p>工程启示来自Gergely Orosz：<strong>在模型调用之上建提供商无关的路由层</strong>。如果提供商可以一夜之间静默改行为，你的应用质量就在你零行代码变更的情况下退化——连个弃用通知都没有。</p>
+<p>这不是治理故事，是工程刚需。对Loopcraft来说，这意味着自治系统必须设计提供商故障的容错机制：</p>
+<ol>
+<li>提供商无关的路由层</li>
+<li>后备模型温备</li>
+<li>输出质量持续仪表盘</li>
+<li>基准测试自动化</li>
+</ol>
+<h2 id="被低估的工程信号"><a href="#被低估的工程信号" class="headerlink" title="被低估的工程信号"></a>被低估的工程信号</h2><p>除了核心范式，Loopcraft讨论中还有几个值得长线关注的信号：</p>
+<p><strong>凭证隔离成为架构模式</strong>：Claude Managed Agents在网络边界交换凭证，智能体永远看不到密钥本身。这应是所有智能体系统的默认模式，而非特例。</p>
+<p><strong>自动审查成为默认</strong>：Cursor将自动审查作为默认行为，分类器子智能体做动作门控。当循环自主运行时，审查层不是可选的，而是必要条件。</p>
+<p><strong>记忆管理转向主动维护</strong>：Weaviate的Engram提出”提取-转换-提交”循环替代简单追加聊天日志。更大的上下文窗口并没有杀死检索——因为上下文仍有延迟和成本。</p>
+<p><strong>模型供应链的隐蔽复杂度</strong>：AllenAI的ModSleuth揭示，Olmo 3依赖89个模型和183个数据集，Nemotron 3依赖273个模型和560个数据集。溯源信任问题堪比软件供应链危机，但几乎无人讨论。</p>
+<h2 id="我的判断"><a href="#我的判断" class="headerlink" title="我的判断"></a>我的判断</h2><p>Loopcraft的方向是对的，但当前叙事过于乐观。</p>
+<p><strong>循环堆叠是正确的长期赌注，但2026年的现实是：大多数团队连一个可靠运行24小时无需人工干预的循环都搭不出来。</strong> 智能体在有界高反馈循环中有效，在专家综合上归零。</p>
+<p>我的建议是：先投资无聊的基础设施——可观测性、回滚、凭证隔离、自动审查——再谈向上堆叠。没有可靠底层循环的Loopcraft，不是艺术，是赌博。</p>
+<hr>
+<p><em>灵感来源：</em></p>
+<ul>
+<li><a href="https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking">Latent Space AINews: Loopcraft: The Art of Stacking Loops</a> — 本文核心框架来源</li>
+<li><a href="https://www.youtube.com/watch?v=kzuCWDHcRfk">Andrej Karpathy @ Sequoia AI Ascent 2026</a> — Vibe Coding与Agentic Engineering的原始论述</li>
+<li><a href="https://mp.weixin.qq.com/s/Do_3efMDDjdv8zMf78Bcxw">刘小排：一问一答式的Vibe Coding的时代已经结束</a> — Goal Coding概念的提出</li>
+</ul>
+]]></content>
+      <categories>
+        <category>AI研究</category>
+      </categories>
+      <tags>
+        <tag>AI工程</tag>
+        <tag>Loopcraft</tag>
+        <tag>Vibe Coding</tag>
+        <tag>Goal Coding</tag>
+        <tag>Agent自治</tag>
+      </tags>
+  </entry>
 </search>
