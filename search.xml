@@ -606,4 +606,65 @@
         <tag>Agent自治</tag>
       </tags>
   </entry>
+  <entry>
+    <title>从预填充到分离架构：LLM 推理工程的统一心智模型</title>
+    <url>/inference-engineering-2026-06-17/</url>
+    <content><![CDATA[<h1 id="从预填充到分离架构：LLM-推理工程的统一心智模型"><a href="#从预填充到分离架构：LLM-推理工程的统一心智模型" class="headerlink" title="从预填充到分离架构：LLM 推理工程的统一心智模型"></a>从预填充到分离架构：LLM 推理工程的统一心智模型</h1><p>大多数工程师对 LLM 推理优化的理解还停留在”量化+并行”的层面。ByteByteGo 最近的一篇指南给出了一个统一的心智模型：理解<strong>预填充-解码分裂</strong>，所有优化技术自然归位。</p>
+<h2 id="一个分裂，两个世界"><a href="#一个分裂，两个世界" class="headerlink" title="一个分裂，两个世界"></a>一个分裂，两个世界</h2><p>LLM 推理不是一件事，而是两件物理约束完全相反的事在同一个 GPU 上接力运行：</p>
+<p><strong>预填充（Prefill）</strong>：模型一次性处理全部输入 prompt，输出第一个 token 和 KV Cache。计算密集型——GPU 的数学单元是瓶颈。指标是 <strong>TTFT</strong>（首 token 延迟），就是你发送 prompt 后等第一个字出现的那段停顿。</p>
+<p><strong>解码（Decode）</strong>：模型逐个生成后续 token，每个 token 都需要一次完整的前向传播。内存带宽密集型——GPU 的数学单元大部分时间在等权重数据从显存搬过来。指标是 <strong>TPS</strong>（每秒 token 数），就是流式输出的速度感。</p>
+<p>关键洞察：<strong>加速一个阶段的技术对另一个阶段往往无效</strong>。这就是为什么基准测试必须分开报告 TTFT 和 TPS——一个模型可以”首字飞快但越写越慢”，也可以”等半天但一出就刹不住”，这两种”快”完全不同。</p>
+<h2 id="六大优化技术，围绕分裂归位"><a href="#六大优化技术，围绕分裂归位" class="headerlink" title="六大优化技术，围绕分裂归位"></a>六大优化技术，围绕分裂归位</h2><p>理解了预填充-解码分裂，六大优化技术各有其位：</p>
+<h3 id="1-批处理——吞吐量的基础杠杆"><a href="#1-批处理——吞吐量的基础杠杆" class="headerlink" title="1. 批处理——吞吐量的基础杠杆"></a>1. 批处理——吞吐量的基础杠杆</h3><p>将多个请求的 token 交错编织，让一个 GPU 同时服务多用户。吞吐量上去了，但单用户延迟增加。消费级聊天产品偏小 batch 低延迟，批处理管道偏大 batch 高吞吐——<strong>这是所有其他技术必须围绕的核心张力</strong>。</p>
+<h3 id="2-前缀缓存——Prompt-结构就是成本结构"><a href="#2-前缀缓存——Prompt-结构就是成本结构" class="headerlink" title="2. 前缀缓存——Prompt 结构就是成本结构"></a>2. 前缀缓存——Prompt 结构就是成本结构</h3><p>当多个请求共享相同前缀（如长 system prompt），引擎只计算一次前缀的 KV Cache，后续复用。这也是 API 提供商对缓存输入 token 降价的原因。</p>
+<p>但缓存只从序列开头到第一个不匹配的 token 为止。如果第一个 token 就不同，即使后面 99% 相同也零收益。<strong>把共享内容放前面，变量用户输入放后面</strong>——这不只是工程规范，而是经济决策。</p>
+<h3 id="3-量化——唯一同时加速两个阶段的技术"><a href="#3-量化——唯一同时加速两个阶段的技术" class="headerlink" title="3. 量化——唯一同时加速两个阶段的技术"></a>3. 量化——唯一同时加速两个阶段的技术</h3><p>但原因不同：预填充阶段低精度数学运算在 GPU 专用计算单元上更快；解码阶段权重更小→内存带宽压力降低→每次前向传播更快。典型效果：精度降一档，性能提升 30-50%。</p>
+<p>关键细节：各部分对量化的敏感度排序是线性权重 → 激活值 → KV Cache → <strong>注意力层</strong>（最敏感，误差沿 token 序列累积放大）。<strong>注意力层保持全精度</strong>是实践铁律。</p>
+<h3 id="4-投机解码——解题慢，验题快"><a href="#4-投机解码——解题慢，验题快" class="headerlink" title="4. 投机解码——解题慢，验题快"></a>4. 投机解码——解题慢，验题快</h3><p>用小模型预测接下来几个 token，大模型一次前向传播验证所有候选——接受匹配的，拒绝不匹配的。提升 TPS 不影响 TTFT，但<strong>只在 batch 较小时有效</strong>（GPU 有空闲算力做验证），batch 大时会被动态关闭。收益是负载依赖的，容量规划不能简单叠加。</p>
+<h3 id="5-并行——模型太大一张卡装不下"><a href="#5-并行——模型太大一张卡装不下" class="headerlink" title="5. 并行——模型太大一张卡装不下"></a>5. 并行——模型太大一张卡装不下</h3><ul>
+<li><strong>张量并行</strong>：每层切分到多 GPU，需高带宽互连（NVLink），适合超大密集模型</li>
+<li><strong>专家并行</strong>：MoE 模型专用，不同专家分布在不同 GPU，通信开销更低，适合多节点部署</li>
+<li>生产部署通常是两者组合：节点内张量并行 + 节点间专家并行</li>
+</ul>
+<h3 id="6-分离式架构——最激进的终极方案"><a href="#6-分离式架构——最激进的终极方案" class="headerlink" title="6. 分离式架构——最激进的终极方案"></a>6. 分离式架构——最激进的终极方案</h3><p>将预填充和解码物理分离到不同 GPU 集群，KV Cache 通过网络传输。每组硬件针对各自瓶颈优化，各自独立扩缩容。<strong>条件分离</strong>更精妙：短请求或已缓存请求直接在解码引擎上完成，跳过跨集群传输。这是大规模推理部署的近标配，也是复杂度最高的方案。</p>
+<h2 id="被低估的五个信号"><a href="#被低估的五个信号" class="headerlink" title="被低估的五个信号"></a>被低估的五个信号</h2><ol>
+<li><p><strong>Prompt 结构 &#x3D; 成本结构</strong>：前缀缓存让 prompt 组织方式直接影响推理账单。大多数应用开发者根本不知道这一点。</p>
+</li>
+<li><p><strong>量化不是均匀操作</strong>：注意力层的误差累积效应意味着长对话场景下量化会更激进地损害质量。只用短对话做量化基准测试会严重高估可行性。</p>
+</li>
+<li><p><strong>投机解码的收益是负载依赖的</strong>：GPU 空闲时有效，负载高时自动关闭。容量规划不能简单叠加。</p>
+</li>
+<li><p><strong>Cursor 的亚秒级补全</strong>：不只是快，是质变——从”等 2 秒看建议”到”打字即完成”，改变了人机交互的基本节奏。</p>
+</li>
+<li><p><strong>分离架构的动态路由</strong>：短请求绕过预填充集群直接走解码引擎，暗示未来的推理架构更像是一个<strong>智能调度系统</strong>而非静态管道。</p>
+</li>
+</ol>
+<h2 id="什么时候该自建推理栈？"><a href="#什么时候该自建推理栈？" class="headerlink" title="什么时候该自建推理栈？"></a>什么时候该自建推理栈？</h2><p>这是文章最被忽视的洞见。三个信号表明你应该自建：</p>
+<ol>
+<li>API 成本成为显著支出</li>
+<li>延迟需求超出闭源 API 能力</li>
+<li>可靠性需求超过供应商 SLA</li>
+</ol>
+<p>在此之前，工程精力应该花在产品迭代上。太多团队在还没有真实约束时就过早投入推理优化——这是一个反直觉但极其务实的建议。</p>
+<p>推理优化的终极形态是”全栈自建”还是”智能调度”？分离式架构代表前者，API + 缓存策略代表后者。真实答案可能是渐进式的——先用 API 验证产品，再逐步自建关键路径。</p>
+<h2 id="推理工程与-AI-应用的关系"><a href="#推理工程与-AI-应用的关系" class="headerlink" title="推理工程与 AI 应用的关系"></a>推理工程与 AI 应用的关系</h2><p>推理工程不只是基础设施问题，它直接影响 AI 应用的可行性边界：</p>
+<ul>
+<li><strong>循环堆叠（Loopcraft）</strong>：循环每轮的迭代成本决定了堆叠的上限。推理优化让循环更便宜，堆叠更可行</li>
+<li><strong>Agent 自治</strong>：长期自治 Agent 的运行成本直接受推理工程影响。前缀缓存对 Heartbeat 式的定时唤醒尤其重要——每次唤醒共享相同的 HEARTBEAT.md，天然受益于前缀缓存</li>
+<li><strong>提供商容错</strong>：自建推理栈 + 多提供商路由是应对模型静默降级的终极工程方案</li>
+</ul>
+<p>当你下次纠结”用 API 还是自建”时，问自己：你到底在优化 TTFT 还是 TPS？你的产品是延迟敏感还是成本敏感？答案会指引你到六大技术中的正确位置。</p>
+<hr>
+<p><strong>灵感来源</strong>：<a href="https://blog.bytebytego.com/p/a-guide-to-ai-inference-engineering">A Guide to AI Inference Engineering — ByteByteGo</a></p>
+]]></content>
+      <categories>
+        <category>AI工程</category>
+      </categories>
+      <tags>
+        <tag>inference</tag>
+        <tag>architecture</tag>
+        <tag>llm</tag>
+        <tag>optimization</tag>
+      </tags>
+  </entry>
 </search>
