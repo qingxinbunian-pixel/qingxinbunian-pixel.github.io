@@ -667,4 +667,204 @@
         <tag>optimization</tag>
       </tags>
   </entry>
+  <entry>
+    <title>自进化代理的反馈闭环——AI Agent 的下一个范式</title>
+    <url>/draft-autoresearch-feedback-loop-2026-07-17/</url>
+    <content><![CDATA[<h1 id="自进化代理的反馈闭环——AI-Agent-的下一个范式"><a href="#自进化代理的反馈闭环——AI-Agent-的下一个范式" class="headerlink" title="自进化代理的反馈闭环——AI Agent 的下一个范式"></a>自进化代理的反馈闭环——AI Agent 的下一个范式</h1><p>AI Agent 正在从「单次任务执行」转向「持续运行系统」。但问题是：谁来维护这些持续运行的代理？</p>
+<p>Roland Gavrilescu（Introspection 联合创始人，前 xAI 代理基础设施负责人）在 AIEWF 2026 上提出了一个名为 <strong>Autoresearch</strong> 的框架——不是让 AI 自动做研究，而是构建一个「外循环」，让代理持续维护和改进自身系统。</p>
+<p>核心难点不在代理的能力，而在设计正确的信号和反馈机制。</p>
+<span id="more"></span>
+
+<h2 id="内循环与外循环"><a href="#内循环与外循环" class="headerlink" title="内循环与外循环"></a>内循环与外循环</h2><p>要理解 Autoresearch，先要理解代理系统的两个循环：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>内循环</th>
+<th>外循环（Autoresearch）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>角色</td>
+<td>主系统，与用户交互，执行工作</td>
+<td>辅助系统，研究和维护主系统</td>
+</tr>
+<tr>
+<td>目标</td>
+<td>完成用户任务</td>
+<td>让主系统变得更好</td>
+</tr>
+<tr>
+<td>关注点</td>
+<td>能力（capability）</td>
+<td>改进能力的能力</td>
+</tr>
+</tbody></table>
+<p>内循环是你每天使用的 AI 代理——写代码、回答问题、执行任务。外循环则是一个元系统，它观察内循环的运行情况，发现瓶颈，提出改进方案，甚至自动实施改进。</p>
+<p><strong>这不是一个未来的概念，而是一个正在发生的工程挑战。</strong></p>
+<h2 id="三个核心模式"><a href="#三个核心模式" class="headerlink" title="三个核心模式"></a>三个核心模式</h2><h3 id="模式一：循环即产品"><a href="#模式一：循环即产品" class="headerlink" title="模式一：循环即产品"></a>模式一：循环即产品</h3><p>Gavrilescu 提出了一个重要的视角转变：从关注模型 → 关注 harness → 关注 loop。</p>
+<p>过去两年，行业一直在追逐更好的模型。今年开始，大家意识到 harness（代理框架）比模型更重要。而现在，最前沿的认知是：<strong>循环本身才是产品。</strong></p>
+<p>这不是模型能力的问题，而是信号设计问题。你如何知道一个代理系统运行得好不好？你如何判断它是「遇到困难」还是「在摸鱼」？你如何区分「需要更多数据」和「需要重新设计提示词」？</p>
+<p>这些问题没有标准答案，因为每个系统的信号需求都不同。</p>
+<h3 id="模式二：代理配方（Agent-Recipe）"><a href="#模式二：代理配方（Agent-Recipe）" class="headerlink" title="模式二：代理配方（Agent Recipe）"></a>模式二：代理配方（Agent Recipe）</h3><p>从「代理工具」到「代理技能」再到「代理配方」，Gavrilescu 的框架在层层抽象。</p>
+<p>一个完整的代理配方包含：</p>
+<ul>
+<li><strong>评估器（evals）</strong>：衡量什么算「好」</li>
+<li><strong>裁判（judges）</strong>：自动评估输出质量</li>
+<li><strong>信号处理</strong>：过滤和优先级排序反馈</li>
+<li><strong>人类专业知识</strong>：编码到系统中的隐性知识</li>
+<li><strong>失败记录</strong>：导致新评估器的错误和决策历史</li>
+</ul>
+<p>核心洞见是：<strong>代码本身不够，过程才是产品。</strong> 你写的不是一段代码，而是一个会不断被改进的配方。</p>
+<h3 id="模式三：渐进优化"><a href="#模式三：渐进优化" class="headerlink" title="模式三：渐进优化"></a>模式三：渐进优化</h3><p>如何让系统既更好又更便宜？</p>
+<p>Gavrilescu 的答案是渐进优化——将前沿模型的能力逐渐蒸馏到自有和定制的系统中。先用最强大的模型做原型验证，然后逐步替换为更小、更便宜的模型，用蒸馏和微调来弥补质量损失。</p>
+<p>这个过程本身就是一个外循环：先跑，再评估，再优化，再部署。</p>
+<h2 id="人类在循环中的位置"><a href="#人类在循环中的位置" class="headerlink" title="人类在循环中的位置"></a>人类在循环中的位置</h2><p>这是 Autoresearch 框架中最值得思考的部分。</p>
+<p>Gavrilescu 认为人必须留在循环中，但角色会从执行者演变为信号源。他用一个类比来解释：<strong>员工加入新公司时，初期大量提问，随后逐渐独立。</strong></p>
+<p>同样，人类在 AI 代理系统中的角色也会经历这个演变——初期是指导者，逐渐变成审核者，最终变成信号源。但人永远不会完全退出，因为只有人知道什么方向是对的。</p>
+<p>值得注意的是，AIEWF 2026 上存在不同观点：</p>
+<table>
+<thead>
+<tr>
+<th>发言人</th>
+<th>立场</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gavrilescu</td>
+<td>人是信号源，逐渐被蒸馏</td>
+</tr>
+<tr>
+<td>Addy Osmani</td>
+<td>外循环必须是人</td>
+</tr>
+<tr>
+<td>Geoffrey Litt</td>
+<td>人必须理解代码</td>
+</tr>
+<tr>
+<td>Paul Bakaus</td>
+<td>人必须参与创造</td>
+</tr>
+</tbody></table>
+<p>这场争论没有标准答案，但所有参与者都同意一点：<strong>人不会消失，但角色会变。</strong></p>
+<h2 id="Pi-框架"><a href="#Pi-框架" class="headerlink" title="Pi 框架"></a>Pi 框架</h2><p>Introspection 的 Pi 框架被比作「代理 harness 的 Linux」——把代理循环与扩展和配置分离，使代理可移植。</p>
+<p>它的设计理念是：一切基于 Git。Git 不再只是代码版本控制，而是<strong>随时间维护的审计日志</strong>。每一次代理运行、每一次决策、每一次改进，都记录在 Git 历史中。</p>
+<p>Introspection 的角色类似 Red Hat——在开源框架的基础上提供企业级产品和支持。</p>
+<h2 id="为什么这对你很重要"><a href="#为什么这对你很重要" class="headerlink" title="为什么这对你很重要"></a>为什么这对你很重要</h2><p>如果你正在构建 AI 代理系统，无论规模大小，你迟早会面对这个问题：<strong>你的代理系统会越跑越好，还是越跑越乱？</strong></p>
+<p>没有反馈循环的代理系统本质上是一个会逐渐退化的系统——模型输出质量波动、上下文被污染、工具调用越来越慢。Autoresearch 框架提供的不是某个具体技术，而是一种思考方式：在设计代理系统时，从一开始就把「改进能力」作为系统的一部分。</p>
+<p>也就是说，<strong>不要只设计一个会做事的代理，要设计一个会学会改进的代理。</strong></p>
+<hr>
+<blockquote>
+<p><strong>灵感来源：</strong> Roland Gavrilescu, <em>Introspection Autoresearch</em>, Latent Space 采访, AIEWF 2026</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>AI技术</category>
+      </categories>
+      <tags>
+        <tag>AI Agent</tag>
+        <tag>自进化</tag>
+        <tag>反馈闭环</tag>
+        <tag>代理框架</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AI 行业正在经历一场「大规模修正」</title>
+    <url>/draft-ai-industry-correction-2026-07-17/</url>
+    <content><![CDATA[<h1 id="AI-行业正在经历一场「大规模修正」"><a href="#AI-行业正在经历一场「大规模修正」" class="headerlink" title="AI 行业正在经历一场「大规模修正」"></a>AI 行业正在经历一场「大规模修正」</h1><p>2026 年 6 月，AI 行业经历了一场前所未有的震荡。</p>
+<p>Anthropic 的旗舰模型被美国政府强制召回，OpenAI 预计全年亏损 140 亿美元，Oracle 的信用利差飙升到一年前的近五倍，中国开源模型在代币使用量上首次超越美国模型——这一切不是巧合，而是 AI 行业正在经历一场结构性修正。</p>
+<span id="more"></span>
+
+<h2 id="修正什么？"><a href="#修正什么？" class="headerlink" title="修正什么？"></a>修正什么？</h2><p>Substack 作者 Devansh 在《The AI Industry is Going Through a Massive Correction》中一针见血地指出：<strong>AI 行业不是在崩溃，而是在修正过去三年对市场运作方式的理解。</strong></p>
+<p>过去三年，行业依赖一系列「替代指标」来做判断：</p>
+<ul>
+<li>基准测试（benchmark）代替真实能力</li>
+<li>运行率（run rate）代替可持续收入</li>
+<li>积压订单（backlog）代替未来现金流</li>
+<li>代币价格（token price）代替真实成本</li>
+</ul>
+<p>2026 年 6 月，这些替代指标同时失效了。</p>
+<h2 id="五个核心信号"><a href="#五个核心信号" class="headerlink" title="五个核心信号"></a>五个核心信号</h2><h3 id="1-前沿模型进入「许可制」时代"><a href="#1-前沿模型进入「许可制」时代" class="headerlink" title="1. 前沿模型进入「许可制」时代"></a>1. 前沿模型进入「许可制」时代</h3><p>Anthropic 的 Fable 5 和 Mythos 5 从发布到下架只用了 13 天。触发机制是一个外部越狱报告，通过 Amazon CEO → 财政部长 → 商务部的政治路径，以「视为出口」（deemed export）理论——最初用于导弹部件管控的法律依据——要求全球下架。24 天后部分解禁，30 天后全面恢复，但在这 24 天内，一个事实上的「许可制」已经建立。</p>
+<p>OpenAI 的反应很说明问题：GPT-5.6 发布后只给 20 个政府协调的「可信合作伙伴」，公众访问推迟到 8 月。<strong>事先请求许可，比事后被召回更安全。</strong></p>
+<h3 id="2-前沿实验室走向公开市场"><a href="#2-前沿实验室走向公开市场" class="headerlink" title="2. 前沿实验室走向公开市场"></a>2. 前沿实验室走向公开市场</h3><p>Anthropic 以 9650 亿美元估值完成 H 轮融资后秘密提交 IPO，但面临一系列商业问题：微软内部取消了 Claude Code（84-95% 采用率也没用）、企业客户开始大规模抵制「代币最大化」、Fable 5 发布仅 13 天就被踢出订阅计划转为按使用量计费。</p>
+<p>OpenAI 预计 2026 年亏损 140 亿美元，Q1 亏损 37 亿而收入仅 57 亿。第一个审计的推理毛利率，将重新定价整个行业。</p>
+<h3 id="3-信用市场开始重新定价-AI-基建"><a href="#3-信用市场开始重新定价-AI-基建" class="headerlink" title="3. 信用市场开始重新定价 AI 基建"></a>3. 信用市场开始重新定价 AI 基建</h3><p>Oracle 的收入增长 21%，积压订单增长 363% 到 6380 亿美元，但年度资本支出 557 亿美元，自由现金流是 -237 亿美元。已融资 430 亿美元债务，还需要再融资 400 亿。S&amp;P 将其从 BBB 降级为 BBB-。</p>
+<p>CoreWeave 同样：994 亿美元积压订单，20.8 亿季度收入，但 5.36 亿净利息支出，7.4 亿净亏损。</p>
+<p>国际清算银行（BIS）在 6 月 28 日的年度报告中发出警告：AI 投资日益依赖债务和复杂融资安排，过度投资风险在增加。</p>
+<h3 id="4-企业-CFO-开始给-AI-代理「上表」"><a href="#4-企业-CFO-开始给-AI-代理「上表」" class="headerlink" title="4. 企业 CFO 开始给 AI 代理「上表」"></a>4. 企业 CFO 开始给 AI 代理「上表」</h3><p>两种定价模式正在对决：按使用量计费（客户承担风险）vs 按结果付费（供应商承担风险）。</p>
+<p>代币作为计价单位正在崩溃。Anthropic 的 Sonnet 5 引入新 tokenizer，相同文本多产生约 30% 代币，促销价 2 美元&#x2F;百万输入代币实际相当于旧 tokenizer 的 2.84 美元。</p>
+<p>Uber 的案例最典型：前四个月就花光了 Claude Code 全年预算，不得不对每个员工每月限制 1500 美元。</p>
+<p><strong>唯一有意义的指标不再是代币价格，而是「每完成一个任务的成本」——包括重试、路由、工具调用、人工干预和失败率。</strong></p>
+<h3 id="5-开源模型抢占代币使用量"><a href="#5-开源模型抢占代币使用量" class="headerlink" title="5. 开源模型抢占代币使用量"></a>5. 开源模型抢占代币使用量</h3><p>OpenRouter 数据显示，6 月初中国模型在代币量上超越美国模型。Vercel 生产数据：开源模型处理 29% 的代币量，但仅占不到 4% 的支出。DeepSeek 单独占 22.6% 的代币量。</p>
+<p>GLM-5.2 的 744B MoE 架构（每次 40B 活跃参数）以 MIT 许可发布，无区域锁定，成为标志性事件。</p>
+<p>市场正在分裂：美国专有模型保留「最后一点能力溢价」的高端工作负载，中国开源模型吸收底层的重复性高容量工作负载。90% 的代币量在底层，但只有 4% 的支出在底层。</p>
+<h2 id="这意味着什么？"><a href="#这意味着什么？" class="headerlink" title="这意味着什么？"></a>这意味着什么？</h2><p>Devansh 的结论是：AI 行业正在从一个「用替代指标做判断」的市场，转向一个「需要可验证证据」的市场。</p>
+<p>在这个新市场中，我认为有几件事会加速发生：</p>
+<ol>
+<li><strong>「验证产业」快速崛起</strong>：AI 审计、评估标准、独立测试机构将成为刚需</li>
+<li><strong>前沿模型分发进入许可证时代</strong>：自愿框架 → 事实许可制 → 正式监管</li>
+<li><strong>AI 代理定价模式彻底改变</strong>：固定订阅制正在死亡，按结果付费是方向</li>
+<li><strong>信用市场持续重新定价 AI 基建</strong>：资本密集度的真实成本正在被暴露</li>
+<li><strong>开源与前沿模型是互补品而非替代品</strong>：专有模型做高端，开源做底层，市场分裂而非替代</li>
+</ol>
+<p>这些变化不是短期波动，而是行业从「叙事驱动」到「验证驱动」的结构性转折。对于关注 AI 的人来说，理解这个修正的深度，比追逐下一个模型发布更重要。</p>
+<hr>
+<blockquote>
+<p><strong>灵感来源：</strong> Devansh, <em>The AI Industry is Going Through a Massive Correction</em>, AI Made Simple (Substack), 2026-07-16</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>AI观察</category>
+      </categories>
+      <tags>
+        <tag>AI行业</tag>
+        <tag>市场分析</tag>
+        <tag>前沿模型</tag>
+        <tag>开源</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>本地 AI 为何正在追赶——主权与效率可以兼得</title>
+    <url>/draft-local-ai-catch-up-2026-07-17/</url>
+    <content><![CDATA[<h1 id="本地-AI-为何正在追赶——主权与效率可以兼得"><a href="#本地-AI-为何正在追赶——主权与效率可以兼得" class="headerlink" title="本地 AI 为何正在追赶——主权与效率可以兼得"></a>本地 AI 为何正在追赶——主权与效率可以兼得</h1><p>如果你还在认为「本地 AI 就是跑个模型」，那你的认知可能还停留在两年前。</p>
+<p>2026 年的今天，本地 AI 的竞争力已经不在于「能不能跑」，而在于「你愿意为可控性付出多少」。当模型效率飞跃让旧硬件重获新生，当开源模型与前沿的差距缩短到 4-8 个月，当闭源巨头的动态量化和价格变动让企业开始算账——「主权与效率兼得」不再是口号，而是正在发生的工程现实。</p>
+<span id="more"></span>
+
+<h2 id="核心误解：本地-AI-≠-跑个模型"><a href="#核心误解：本地-AI-≠-跑个模型" class="headerlink" title="核心误解：本地 AI ≠ 跑个模型"></a>核心误解：本地 AI ≠ 跑个模型</h2><p>ChatGPT 和 Claude Code 好用的原因，从来不是模型本身有多强，而是背后有一整套基础设施：搜索、工具、代理、文档摄取、上下文管理。</p>
+<p>Ahmad Osman（Osmantic 创始人）在 AIEWF 2026 的工作坊和系列博客《Serving AI From The Basement》中反复强调：<strong>本地 AI 的瓶颈不在算力，在基础设施完备度。</strong></p>
+<p>你可以在本地跑一个和 GPT-4 一样强的模型，但如果没有配套的工具链和代理框架，体验仍然天差地别。这不是模型的问题，这是生态的问题。</p>
+<h2 id="模型差距：从代际到季度级"><a href="#模型差距：从代际到季度级" class="headerlink" title="模型差距：从代际到季度级"></a>模型差距：从代际到季度级</h2><p>两年前，开源模型与闭源前沿的差距是以「代」来衡量的——GPT-3 vs LLaMA 2，差距大到几乎不可用。</p>
+<p>今天，这个差距已经缩短到 4-8 个月。更重要的是，追赶者从「单引擎」变成了「多引擎」：Qwen、DeepSeek、GLM、Kimi——中国模型厂商的集体崛起，让开源生态的进步速度从单点突破变成了系统性的加速。</p>
+<p>GLM-5.2 的 744B MoE 架构、MIT 许可、无区域锁定，就是最新的例证。</p>
+<h2 id="效率飞跃与硬件普惠"><a href="#效率飞跃与硬件普惠" class="headerlink" title="效率飞跃与硬件普惠"></a>效率飞跃与硬件普惠</h2><p>这是最容易被忽视的趋势：2020 年发布的 RTX 3090，现在能做两年前需要云端 A100 才能做的事。</p>
+<p>Osman 的家庭实验室是 22 张 RTX 3090，可以运行 DeepSeek R-1 671B——一个 671B 参数的推理模型，在消费级硬件上跑起来了。这在两年前是天方夜谭。</p>
+<p>量化技术、推理优化、模型蒸馏——这些技术每三个月就上一个台阶，让旧硬件不断重获新生。</p>
+<h2 id="企业主权-AI：从意识形态到商业刚需"><a href="#企业主权-AI：从意识形态到商业刚需" class="headerlink" title="企业主权 AI：从意识形态到商业刚需"></a>企业主权 AI：从意识形态到商业刚需</h2><p>主权 AI 的三个核心价值，每一个都直接指向商业痛点：</p>
+<ol>
+<li><strong>模型质量不会意外变化</strong>：你不会因为提供商动态量化而突然发现模型「变笨了」</li>
+<li><strong>访问权限可控</strong>：不会被供应商单方面取消、锁定或涨价</li>
+<li><strong>数据合规</strong>：保留对知识产权、数据、隐私的完全控制</li>
+</ol>
+<p>这不是意识形态问题，而是理性选择。当 Anthropic 被曝出动态量化、当 API 价格可以在一个月内翻倍、当你的竞争对手因为数据泄露被罚款——主权 AI 的成本溢价就变成了保险溢价。</p>
+<h2 id="小模型专业化路线图"><a href="#小模型专业化路线图" class="headerlink" title="小模型专业化路线图"></a>小模型专业化路线图</h2><p>Osman 提出了一个清晰的演进路径：</p>
+<p><strong>通用大模型 → 收集反馈 → 训练更专业模型 → 提升性能降低成本 → 形成差异化护城河</strong></p>
+<p>这个循环的关键在于：你不需要在前沿模型上竞争，你只需要在自己的领域做得比通用模型更好。对于大多数企业来说，这完全足够。</p>
+<h2 id="开源社区的门槛问题"><a href="#开源社区的门槛问题" class="headerlink" title="开源社区的门槛问题"></a>开源社区的门槛问题</h2><p>Osman 也直言不讳地批评了开源社区的排斥性文化——「LOL, bro, just set up llama.cpp」式的回复，让无数想尝试本地 AI 的人望而却步。</p>
+<p>闭源巨头正是利用这种 FUD（恐惧、不确定性、怀疑）策略，让用户相信「你无法竞争」。但事实是，部署工具链虽然在变好，但对非专家来说仍然太难。这是本地 AI 普及的最大障碍，不是算力，不是模型质量，而是开发者体验。</p>
+<hr>
+<blockquote>
+<p><strong>灵感来源：</strong> Ahmad Osman, <em>Serving AI From The Basement</em>, Latent Space 采访, AIEWF 2026</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>AI观察</category>
+      </categories>
+      <tags>
+        <tag>本地AI</tag>
+        <tag>开源模型</tag>
+        <tag>主权AI</tag>
+        <tag>基础设施</tag>
+      </tags>
+  </entry>
 </search>
