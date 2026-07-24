@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>从生图到发布：我的 AI 内容创作流水线进化记 | 小窝</title><meta name="author" content="情欣不念"><meta name="copyright" content="情欣不念"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="从生图到发布：我的 AI 内容创作流水线进化记今天在整理思路时，发现我的内容创作流水线正在经历一场有趣的进化——从单一工具到多工具编排，从手动操作到全自动流水线。这条线清晰地勾勒出了三个阶段的递进。 第一阶段：即梦 AI + Hermes 的生图发布基础能力已经跑通——即梦 AI 负责生成图片，Hermes 负责定时发布到小红书。这套组合能独立完成「生图 → 发布」的闭环，但缺少两个关键环节：文案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从生图到发布：我的 AI 内容创作流水线进化记">
+<meta property="og:url" content="https://qingxinbunian-pixel.github.io/content-pipeline-evolution-2026-07-24/">
+<meta property="og:site_name" content="小窝">
+<meta property="og:description" content="从生图到发布：我的 AI 内容创作流水线进化记今天在整理思路时，发现我的内容创作流水线正在经历一场有趣的进化——从单一工具到多工具编排，从手动操作到全自动流水线。这条线清晰地勾勒出了三个阶段的递进。 第一阶段：即梦 AI + Hermes 的生图发布基础能力已经跑通——即梦 AI 负责生成图片，Hermes 负责定时发布到小红书。这套组合能独立完成「生图 → 发布」的闭环，但缺少两个关键环节：文案">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://qingxinbunian-pixel.github.io/img/airen.png">
+<meta property="article:published_time" content="2026-07-24T14:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-24T14:00:18.910Z">
+<meta property="article:author" content="情欣不念">
+<meta property="article:tag" content="AI工作流">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="内容创作">
+<meta property="article:tag" content="小红书">
+<meta property="article:tag" content="自动化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://qingxinbunian-pixel.github.io/img/airen.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "从生图到发布：我的 AI 内容创作流水线进化记",
+  "url": "https://qingxinbunian-pixel.github.io/content-pipeline-evolution-2026-07-24/",
+  "image": "https://qingxinbunian-pixel.github.io/img/airen.png",
+  "datePublished": "2026-07-24T14:00:00.000Z",
+  "dateModified": "2026-07-24T14:00:18.910Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "情欣不念",
+      "url": "https://qingxinbunian-pixel.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://qingxinbunian-pixel.github.io/content-pipeline-evolution-2026-07-24/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '从生图到发布：我的 AI 内容创作流水线进化记',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/xing.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/xingkong.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/airen.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/airen.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">小窝</span></a><a class="nav-page-title" href="/"><span class="site-name">从生图到发布：我的 AI 内容创作流水线进化记</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">从生图到发布：我的 AI 内容创作流水线进化记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-24T14:00:00.000Z" title="发表于 2026-07-24 22:00:00">2026-07-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-24T14:00:18.910Z" title="更新于 2026-07-24 22:00:18">2026-07-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/AI%E5%AE%9E%E8%B7%B5/">AI实践</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">840</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="从生图到发布：我的-AI-内容创作流水线进化记"><a href="#从生图到发布：我的-AI-内容创作流水线进化记" class="headerlink" title="从生图到发布：我的 AI 内容创作流水线进化记"></a>从生图到发布：我的 AI 内容创作流水线进化记</h1><p>今天在整理思路时，发现我的内容创作流水线正在经历一场有趣的进化——从单一工具到多工具编排，从手动操作到全自动流水线。这条线清晰地勾勒出了三个阶段的递进。</p>
+<h2 id="第一阶段：即梦-AI-Hermes-的生图发布"><a href="#第一阶段：即梦-AI-Hermes-的生图发布" class="headerlink" title="第一阶段：即梦 AI + Hermes 的生图发布"></a>第一阶段：即梦 AI + Hermes 的生图发布</h2><p>基础能力已经跑通——即梦 AI 负责生成图片，Hermes 负责定时发布到小红书。这套组合能独立完成「生图 → 发布」的闭环，但缺少两个关键环节：文案创作和浏览器交互。</p>
+<h2 id="第二阶段：Claude-ChatCut-加入文案增强"><a href="#第二阶段：Claude-ChatCut-加入文案增强" class="headerlink" title="第二阶段：Claude + ChatCut 加入文案增强"></a>第二阶段：Claude + ChatCut 加入文案增强</h2><p>Claude 配合 ChatCut 插件的加入填补了文案的短板。ChatCut 增强了 Claude 的截图&#x2F;代码识别能力，让 Claude 能更好地理解页面上下文，生成更精准的文案和配图逻辑。</p>
+<p>这个组合让流水线变成了：<strong>即梦 AI 生图 → Claude+ChatCut 写文案 → Hermes 发布</strong>。但问题来了——三块之间的串联还是手动的，需要一个”胶水层”把它们粘在一起。</p>
+<h2 id="第三阶段（进行中）：全自动漫画发布流水线"><a href="#第三阶段（进行中）：全自动漫画发布流水线" class="headerlink" title="第三阶段（进行中）：全自动漫画发布流水线"></a>第三阶段（进行中）：全自动漫画发布流水线</h2><p>这就是下一阶段的目标——全自动，从创作到发布零人工介入。</p>
+<p>架构设想是四层：</p>
+<ol>
+<li><strong>即梦 AI</strong> — 图像生成层，负责漫画分镜&#x2F;配图</li>
+<li><strong>OpenClaw</strong> — 浏览器控制层，负责自动化操作</li>
+<li><strong>Kimi Code</strong> — 脚本编写层，负责串联各组件</li>
+<li><strong>Hermes</strong> — 发布调度层，负责定时发帖</li>
+</ol>
+<p>关键洞察是：<strong>工具本身不再重要，重要的是它们之间如何编排</strong>。Kimi Code 写脚本调用即梦 AI 接口，OpenClaw 控制浏览器完成交互，Hermes 调度任务——这些组件像乐高一样拼在一起，每一块都可以被替换或升级。</p>
+<h2 id="另一条线：作业智能体与学习助手"><a href="#另一条线：作业智能体与学习助手" class="headerlink" title="另一条线：作业智能体与学习助手"></a>另一条线：作业智能体与学习助手</h2><p>除了内容创作，另一个并行推进的项目是作业智能体与学习助手的接口融合。今天大量浏览超星慕课课程作业的行为，本质上就是在为这个接口做实地调研。</p>
+<p>这里有一个有意思的分工模型：</p>
+<ul>
+<li><strong>作业智能体</strong>负责「操作层」——识别课程、获取作业列表、模拟提交</li>
+<li><strong>学习助手</strong>负责「理解层」——内容讲解、答疑、知识梳理</li>
+</ul>
+<p>两者融合后，你只需要说一句「帮我看看这周有什么作业要交」，作业智能体自动扫描所有课程返回清单，学习助手再针对每一项作业给出辅导。这背后的逻辑和内容创作流水线是一样的——<strong>分层解耦，各司其职</strong>。</p>
+<h2 id="一条暗线：Agent-工作流的可组合性"><a href="#一条暗线：Agent-工作流的可组合性" class="headerlink" title="一条暗线：Agent 工作流的可组合性"></a>一条暗线：Agent 工作流的可组合性</h2><p>回顾今天的两个方向——内容创作流水线和作业智能体——它们共享一个底层模式：<strong>Agent 工作流的可组合性</strong>。</p>
+<p>这不是一个抽象的概念。今天在 Kimi Code 上花的时间、在超星慕课上浏览的每一个课程页面、在 GitHub 上看的每一个仓库，都在为这个模式积累原材料。当流水线跑通的那一天，回头看会发现——每一步都是必要的铺垫。</p>
+<hr>
+<p><em>Lineage: 20260724-4f78（来自 lingguang-pet 桌宠笔记）</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://qingxinbunian-pixel.github.io">情欣不念</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://qingxinbunian-pixel.github.io/content-pipeline-evolution-2026-07-24/">https://qingxinbunian-pixel.github.io/content-pipeline-evolution-2026-07-24/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://qingxinbunian-pixel.github.io" target="_blank">小窝</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a><a class="post-meta__tags" href="/tags/AI%E5%B7%A5%E4%BD%9C%E6%B5%81/">AI工作流</a><a class="post-meta__tags" href="/tags/%E5%B0%8F%E7%BA%A2%E4%B9%A6/">小红书</a><a class="post-meta__tags" href="/tags/%E5%86%85%E5%AE%B9%E5%88%9B%E4%BD%9C/">内容创作</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a></div><div class="post-share"><div class="social-share" data-image="/img/airen.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/kimi-code-homework-agent-2026-07-24/" title="当 AI 编程 Agent 开始内卷：Kimi Code 入局与作业智能体的诞生"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">当 AI 编程 Agent 开始内卷：Kimi Code 入局与作业智能体的诞生</div></div><div class="info-2"><div class="info-item-1">当 AI 编程 Agent 开始内卷：Kimi Code 入局与作业智能体的诞生今天是个有意思的日子——不是因为某个大新闻，而是我日常回顾中捕捉到的几个信号，拼在一起恰好勾勒出 AI Agent 工具链的一个新阶段。 Kimi Code：月之暗面的编程 Agent 入场今天花了不少时间探索 Kimi Code——月之暗面推出的 AI 编程 Agent 与 CLI 工具，搭载 Kimi K3 模型。 如果你关注过这个领域，会发现一个有趣的现象：AI 编程 Agent 正在从「三足鼎立」走向「群雄并起」。Claude Code 有 Anthropic 的工程底蕴，Codex 有 OpenAI 的生态整合，现在 Kimi Code 带着月之暗面在中文场景的积累进场了。 Kimi Code 的 CLI 接口设计让它天然适合集成到自动化工作流中。我可以想象它被用来写爬虫脚本、调用 API、或者作为中间件串联多个工具——这正是我今天的实践方向。 作业智能体：从「浏览作业」到「自动化管理」今天在超星慕课平台上花了不少时间检查各门课程的作业列表——概率论、软件工程、大学物理、形势与政策、毛概、英...</div></div></div></a><a class="pagination-related" href="/draft-autoresearch-feedback-loop-2026-07-17/" title="自进化代理的反馈闭环——AI Agent 的下一个范式"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">自进化代理的反馈闭环——AI Agent 的下一个范式</div></div><div class="info-2"><div class="info-item-1">自进化代理的反馈闭环——AI Agent 的下一个范式AI Agent 正在从「单次任务执行」转向「持续运行系统」。但问题是：谁来维护这些持续运行的代理？ Roland Gavrilescu（Introspection 联合创始人，前 xAI 代理基础设施负责人）在 AIEWF 2026 上提出了一个名为 Autoresearch 的框架——不是让 AI 自动做研究，而是构建一个「外循环」，让代理持续维护和改进自身系统。 核心难点不在代理的能力，而在设计正确的信号和反馈机制。   内循环与外循环要理解 Autoresearch，先要理解代理系统的两个循环：    维度 内循环 外循环（Autoresearch）    角色 主系统，与用户交互，执行工作 辅助系统，研究和维护主系统   目标 完成用户任务 让主系统变得更好   关注点 能力（capability） 改进能力的能力   内循环是你每天使用的 AI 代理——写代码、回答问题、执行任务。外循环则是一个元系统，它观察内循环的运行情况，发现瓶颈，提出改进方案，甚至自动实施改进。 这不是一个未来的概念，而是一个正在发生的工程挑...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/ai-self-repair-2026-05-25/" title="当 AI 开始自己修自己——从 OpenCLI 自修复看 Agent 的下一步"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-05-25</div><div class="info-item-2">当 AI 开始自己修自己——从 OpenCLI 自修复看 Agent 的下一步</div></div><div class="info-2"><div class="info-item-1">当 AI 开始自己修自己——从 OpenCLI 自修复看 Agent 的下一步你有没有这样的经历：精心搭建的自动化脚本，某天网站改了个按钮的位置，整个工作流就崩了。然后你花一整个下午调试，发现不过是 CSS 选择器变了。 OpenCLI 的 opencli-autofix 技能直接解决了这个问题——当命令失败，AI Agent 自动诊断、自动修复、自动重试。整个过程无人干预。 自修复是怎么工作的三步走：  抓证据：命令失败后，用 --trace retain-on-failure 重新执行，捕获浏览器截图、网络请求、控制台日志、DOM 状态——一切能帮 AI 理解「哪里出了问题」的信息。  找病灶：从 trace 中提取 adapterSourcePath，精确定位到出问题的那个适配器文件。不是猜测，不是全文搜索，是系统自动告诉 AI「这个文件坏了」。  改完重试：AI 修改适配器代码，重新执行原命令。最多重试三次，防止无限循环。   关键设计：知道什么不能碰自修复之所以可靠，是因为它明确知道自己不能做什么：  ❌ 不能改核心运行时代码（src/**） ❌ 不能改浏览器扩展（ex...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/airen.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">情欣不念</div><div class="author-info-description">欢迎来到我的世界</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/qingxinbunian-pixel"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/qingxinbunian-pixel" target="_blank" title="GitHub"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:qingxinbunian@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #e17055;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E%E7%94%9F%E5%9B%BE%E5%88%B0%E5%8F%91%E5%B8%83%EF%BC%9A%E6%88%91%E7%9A%84-AI-%E5%86%85%E5%AE%B9%E5%88%9B%E4%BD%9C%E6%B5%81%E6%B0%B4%E7%BA%BF%E8%BF%9B%E5%8C%96%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">从生图到发布：我的 AI 内容创作流水线进化记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E5%8D%B3%E6%A2%A6-AI-Hermes-%E7%9A%84%E7%94%9F%E5%9B%BE%E5%8F%91%E5%B8%83"><span class="toc-number">1.1.</span> <span class="toc-text">第一阶段：即梦 AI + Hermes 的生图发布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9AClaude-ChatCut-%E5%8A%A0%E5%85%A5%E6%96%87%E6%A1%88%E5%A2%9E%E5%BC%BA"><span class="toc-number">1.2.</span> <span class="toc-text">第二阶段：Claude + ChatCut 加入文案增强</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%88%E8%BF%9B%E8%A1%8C%E4%B8%AD%EF%BC%89%EF%BC%9A%E5%85%A8%E8%87%AA%E5%8A%A8%E6%BC%AB%E7%94%BB%E5%8F%91%E5%B8%83%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="toc-number">1.3.</span> <span class="toc-text">第三阶段（进行中）：全自动漫画发布流水线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A6%E4%B8%80%E6%9D%A1%E7%BA%BF%EF%BC%9A%E4%BD%9C%E4%B8%9A%E6%99%BA%E8%83%BD%E4%BD%93%E4%B8%8E%E5%AD%A6%E4%B9%A0%E5%8A%A9%E6%89%8B"><span class="toc-number">1.4.</span> <span class="toc-text">另一条线：作业智能体与学习助手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E6%9D%A1%E6%9A%97%E7%BA%BF%EF%BC%9AAgent-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%E5%8F%AF%E7%BB%84%E5%90%88%E6%80%A7"><span class="toc-number">1.5.</span> <span class="toc-text">一条暗线：Agent 工作流的可组合性</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/content-pipeline-evolution-2026-07-24/" title="从生图到发布：我的 AI 内容创作流水线进化记">从生图到发布：我的 AI 内容创作流水线进化记</a><time datetime="2026-07-24T14:00:00.000Z" title="发表于 2026-07-24 22:00:00">2026-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/kimi-code-homework-agent-2026-07-24/" title="当 AI 编程 Agent 开始内卷：Kimi Code 入局与作业智能体的诞生">当 AI 编程 Agent 开始内卷：Kimi Code 入局与作业智能体的诞生</a><time datetime="2026-07-24T14:00:00.000Z" title="发表于 2026-07-24 22:00:00">2026-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/draft-autoresearch-feedback-loop-2026-07-17/" title="自进化代理的反馈闭环——AI Agent 的下一个范式">自进化代理的反馈闭环——AI Agent 的下一个范式</a><time datetime="2026-07-17T14:40:00.000Z" title="发表于 2026-07-17 22:40:00">2026-07-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/draft-local-ai-catch-up-2026-07-17/" title="本地 AI 为何正在追赶——主权与效率可以兼得">本地 AI 为何正在追赶——主权与效率可以兼得</a><time datetime="2026-07-17T14:35:00.000Z" title="发表于 2026-07-17 22:35:00">2026-07-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/draft-ai-industry-correction-2026-07-17/" title="AI 行业正在经历一场「大规模修正」">AI 行业正在经历一场「大规模修正」</a><time datetime="2026-07-17T14:30:00.000Z" title="发表于 2026-07-17 22:30:00">2026-07-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/airen.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By 情欣不念</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script src="/js/project.js"></script><script src="/js/splash.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
