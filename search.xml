@@ -941,4 +941,81 @@
         <tag>小红书自动化</tag>
       </tags>
   </entry>
+  <entry>
+    <title>AI 编程 Agent 的选型思考：从 Kimi K3 到火山方舟 Coding Plan</title>
+    <url>/ai-coding-tool-selection-2026-07-25/</url>
+    <content><![CDATA[<h1 id="AI-编程-Agent-的选型思考：从-Kimi-K3-到火山方舟-Coding-Plan"><a href="#AI-编程-Agent-的选型思考：从-Kimi-K3-到火山方舟-Coding-Plan" class="headerlink" title="AI 编程 Agent 的选型思考：从 Kimi K3 到火山方舟 Coding Plan"></a>AI 编程 Agent 的选型思考：从 Kimi K3 到火山方舟 Coding Plan</h1><p>最近 AI 编程工具赛道的竞争越来越激烈了。Claude Code 推出了全链路工作流，Codex 有全生命周期管理，而 Kimi Code 带着 Kimi K3 模型入局，似乎正在打出一张差异化的牌。</p>
+<h2 id="Kimi-K3-的定位：专为智能体编程而生"><a href="#Kimi-K3-的定位：专为智能体编程而生" class="headerlink" title="Kimi K3 的定位：专为智能体编程而生"></a>Kimi K3 的定位：专为智能体编程而生</h2><p>月之暗面在推出 Kimi Code 时，搭载的 Kimi K3 模型有一个值得关注的特点：<strong>它是专为智能体编程与知识工作打造的模型</strong>。</p>
+<p>这个定位很有意思。其他 AI 编程工具（Claude Code、Codex）用的是通用大模型，而 Kimi K3 从一开始就针对”Agent 编程”这个场景做了优化。这意味着什么？</p>
+<ol>
+<li><strong>Agent 原生能力</strong>：K3 在理解多步骤任务、维护长上下文、处理工具调用方面可能更有针对性</li>
+<li><strong>中文场景优势</strong>：作为国内团队开发的模型，在处理中文技术文档、中文 API 方面天然更顺手</li>
+<li><strong>CLI 优先设计</strong>：Kimi Code 通过 CLI 接口直接使用，便于集成到已有的自动化工作流中</li>
+</ol>
+<h2 id="火山方舟-Coding-Plan：AI-编程的”基础设施层”"><a href="#火山方舟-Coding-Plan：AI-编程的”基础设施层”" class="headerlink" title="火山方舟 Coding Plan：AI 编程的”基础设施层”"></a>火山方舟 Coding Plan：AI 编程的”基础设施层”</h2><p>如果说 Kimi Code 和 Claude Code 是”工具层”，那火山方舟的 Coding Plan 就是”基础设施层”——它管理的是 AI 编程 API 的调用配额与订阅计划。</p>
+<p>这揭示了一个趋势：<strong>AI 编程正在从”偶尔试用”走向”规模化使用”</strong>。当企业开始系统性地使用 AI 编程工具时，API 配额管理、调用监控、成本控制就成了刚需。火山方舟抓住的就是这个需求。</p>
+<h2 id="Claude-Code-全链路工作流：从-0-到部署"><a href="#Claude-Code-全链路工作流：从-0-到部署" class="headerlink" title="Claude Code 全链路工作流：从 0 到部署"></a>Claude Code 全链路工作流：从 0 到部署</h2><p>Claude Code 这边也没闲着。”从 0 到部署：Claude Code 全链路工作流”这份指南展示了 Claude Code 的端到端能力——从项目初始化、编码、测试到上线，一条龙完成。</p>
+<p>这与我之前写的《当 AI 编程 Agent 开始内卷》中的观察一致：AI 编程工具正在从”写代码的助手”变成”全栈开发者”。</p>
+<h2 id="选型框架：三个维度"><a href="#选型框架：三个维度" class="headerlink" title="选型框架：三个维度"></a>选型框架：三个维度</h2><p>综合来看，选型可以从三个维度考虑：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Kimi Code</th>
+<th>Claude Code</th>
+<th>Codex</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>模型针对性</td>
+<td>K3 专为 Agent 编程优化</td>
+<td>通用模型</td>
+<td>通用模型</td>
+</tr>
+<tr>
+<td>中文支持</td>
+<td>强</td>
+<td>一般</td>
+<td>一般</td>
+</tr>
+<tr>
+<td>全链路能力</td>
+<td>发展中</td>
+<td>强（全链路工作流）</td>
+<td>强（全生命周期）</td>
+</tr>
+<tr>
+<td>基础设施配套</td>
+<td>火山方舟 Coding Plan</td>
+<td>无专门配套</td>
+<td>无专门配套</td>
+</tr>
+<tr>
+<td>开源生态</td>
+<td>部分开源</td>
+<td>不开源</td>
+<td>不开源</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>AI 编程工具的选择不是一个”哪个更好”的问题，而是”哪个更适合你的场景”的问题：</p>
+<ul>
+<li>如果你主要做中文项目，需要 Agent 原生能力，<strong>Kimi Code + 火山方舟 Coding Plan</strong> 可能是更完整的方案</li>
+<li>如果你需要端到端的全链路开发能力，<strong>Claude Code</strong> 的全链路工作流更成熟</li>
+<li>如果你需要全生命周期管理，<strong>Codex</strong> 的 &#x2F;goal 系统更完善</li>
+</ul>
+<p>当然，最理想的情况是<strong>不要绑定单一工具</strong>——像扣子 3.0 那样，把 Kimi Code、Claude Code、Codex 都纳入统一的调度体系，让它们各司其职。这才是未来 AI 编程的终极形态。</p>
+<hr>
+<p><em>灵感来源：2026-07-25 每日回顾笔记</em></p>
+]]></content>
+      <categories>
+        <category>AI工具</category>
+      </categories>
+      <tags>
+        <tag>Claude Code</tag>
+        <tag>AI编程</tag>
+        <tag>Kimi Code</tag>
+        <tag>火山方舟</tag>
+        <tag>工具选型</tag>
+      </tags>
+  </entry>
 </search>
