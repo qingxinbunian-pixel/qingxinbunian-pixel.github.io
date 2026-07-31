@@ -1018,4 +1018,78 @@
         <tag>工具选型</tag>
       </tags>
   </entry>
+  <entry>
+    <title>从作业智能体到学习助手：AI 教育 Agent 的接口融合之路</title>
+    <url>/draft-homework-agent-learning-assistant-2026-07-31/</url>
+    <content><![CDATA[<h1 id="从作业智能体到学习助手：AI-教育-Agent-的接口融合之路"><a href="#从作业智能体到学习助手：AI-教育-Agent-的接口融合之路" class="headerlink" title="从作业智能体到学习助手：AI 教育 Agent 的接口融合之路"></a>从作业智能体到学习助手：AI 教育 Agent 的接口融合之路</h1><p>前几天我写了作业智能体（Homework Agent）的思路——一个能自动识别课程、获取作业列表、辅助提交的 AI Agent 系统。这两天我在推进一个更重要的方向：<strong>把作业智能体和我的学习助手进行接口融合</strong>。</p>
+<h2 id="为什么需要融合？"><a href="#为什么需要融合？" class="headerlink" title="为什么需要融合？"></a>为什么需要融合？</h2><p>先说背景。作业智能体目前的核心能力是：</p>
+<ul>
+<li>自动识别各课程（概率论、软件工程、大学物理、形势与政策等）</li>
+<li>通过超星慕课 API 获取作业列表，识别已完成&#x2F;未完成状态</li>
+<li>模拟请求获取作业题目与答案状态</li>
+<li>辅助作业提交</li>
+</ul>
+<p>而学习助手负责的是另一件事：</p>
+<ul>
+<li>内容理解</li>
+<li>知识讲解</li>
+<li>答疑解惑</li>
+</ul>
+<p>这两个系统各管一摊，但实际上是同一件事的两个阶段。<strong>作业智能体负责「采集」，学习助手负责「理解」</strong>——割裂开来，两个 Agent 的价值都大打折扣。</p>
+<h2 id="融合方案：数据采集-知识讲解的闭环"><a href="#融合方案：数据采集-知识讲解的闭环" class="headerlink" title="融合方案：数据采集 + 知识讲解的闭环"></a>融合方案：数据采集 + 知识讲解的闭环</h2><p>融合后的架构是这样的：</p>
+<p><strong>作业智能体层（数据采集）：</strong></p>
+<ul>
+<li>识别课程、获取作业列表</li>
+<li>将作业题目、答案状态、课程内容等数据采集到统一接口</li>
+<li>访问 <code>localhost:3000</code> 的学习助手本地服务，传递数据</li>
+</ul>
+<p><strong>学习助手层（内容理解）：</strong></p>
+<ul>
+<li>接收作业智能体采集的课程数据</li>
+<li>基于超星慕课课程内容进行知识讲解</li>
+<li>在用户做作业时提供实时答疑</li>
+<li>将答疑结果反馈给作业智能体，辅助自动提交</li>
+</ul>
+<p>简单说，<strong>作业智能体解决「有什么作业、做没做完」，学习助手解决「这道题怎么做、知识点是什么」</strong>。两者通过一个本地接口（<code>localhost:3000</code>）打通，形成一个完整的「采集 → 理解 → 反馈 → 完成」闭环。</p>
+<h2 id="技术实现要点"><a href="#技术实现要点" class="headerlink" title="技术实现要点"></a>技术实现要点</h2><h3 id="超星慕课-API-结构"><a href="#超星慕课-API-结构" class="headerlink" title="超星慕课 API 结构"></a>超星慕课 API 结构</h3><p>作业智能体已经解析了超星慕课课程页面的 URL 结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">courseid、clazzid、cpi、enc 等参数</span><br></pre></td></tr></table></figure>
+
+<p>以及作业详情页的 API 参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">workId、answerId、taskrefId</span><br></pre></td></tr></table></figure>
+
+<p>这些参数构成了作业智能体与超星慕课通信的基础。学习助手不需要重新解析这些参数——它只需要从作业智能体接收结构化的数据就行。</p>
+<h3 id="接口设计"><a href="#接口设计" class="headerlink" title="接口设计"></a>接口设计</h3><p>学习助手运行在 <code>localhost:3000</code>，提供 RESTful 接口：</p>
+<ul>
+<li><code>GET /courses</code> — 获取课程列表（来自作业智能体）</li>
+<li><code>GET /homework/:courseId</code> — 获取某课程的作业列表</li>
+<li><code>POST /explain/:questionId</code> — 请求对某道题的讲解</li>
+<li><code>POST /answer/:questionId</code> — 提交答案（经用户确认后）</li>
+</ul>
+<p>作业智能体作为数据源，定期扫描课程更新，将新作业推送给学习助手，学习助手负责内容层面的处理。</p>
+<h2 id="为什么这值得做"><a href="#为什么这值得做" class="headerlink" title="为什么这值得做"></a>为什么这值得做</h2><p>这个融合的价值在于：</p>
+<ol>
+<li><strong>效率提升</strong>：不再需要手动打开超星、查看作业、再切到学习助手问问题——一切自动化</li>
+<li><strong>知识积累</strong>：每次答疑的 Q&amp;A 对可以沉淀下来，形成个人知识库</li>
+<li><strong>逐步进化</strong>：从简单的作业管理，到智能学习辅导，再到自适应学习路径规划，这是教育 Agent 的完整进化路径</li>
+</ol>
+<h2 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h2><ul>
+<li>[[homework-agent]] — 作业智能体概念与设计</li>
+<li>[[kimi-code]] — 用于编写作业智能体自动化脚本的工具</li>
+<li>超星慕课课程 API 结构解析</li>
+</ul>
+<hr>
+<blockquote>
+<p>灵感来源：lingguang-pet 每日回顾笔记（2026-07-31）</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>AI 实践</category>
+      </categories>
+      <tags>
+        <tag>AI Agent</tag>
+        <tag>自动化</tag>
+        <tag>作业智能体</tag>
+        <tag>教育科技</tag>
+      </tags>
+  </entry>
 </search>
