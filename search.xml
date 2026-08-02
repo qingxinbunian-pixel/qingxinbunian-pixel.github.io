@@ -1092,4 +1092,34 @@
         <tag>教育科技</tag>
       </tags>
   </entry>
+  <entry>
+    <title>AI 辅助游戏开发的新边界：从 Claude-of-Duty 看 Three.js 与 AI 编程的结合</title>
+    <url>/draft-claude-of-duty-ai-game-dev-2026-08-02/</url>
+    <content><![CDATA[<h1 id="AI-辅助游戏开发的新边界：从-Claude-of-Duty-看-Three-js-与-AI-编程的结合"><a href="#AI-辅助游戏开发的新边界：从-Claude-of-Duty-看-Three-js-与-AI-编程的结合" class="headerlink" title="AI 辅助游戏开发的新边界：从 Claude-of-Duty 看 Three.js 与 AI 编程的结合"></a>AI 辅助游戏开发的新边界：从 Claude-of-Duty 看 Three.js 与 AI 编程的结合</h1><p>最近在浏览 GitHub 时，发现了一个很有意思的项目——<strong>Claude-of-Duty</strong>，由开发者 Matt Shumer 使用 Claude Code 和 Three.js 构建的类使命召唤（Call of Duty）品质的 FPS 游戏原型。</p>
+<p>这个项目本身或许不算复杂，但它代表了一个值得关注的趋势：<strong>AI 编程工具正在突破”写代码”的边界，进入”构建完整交互体验”的领域。</strong></p>
+<h2 id="从工具到创作者"><a href="#从工具到创作者" class="headerlink" title="从工具到创作者"></a>从工具到创作者</h2><p>过去我们用 AI 编程工具写脚本、写 API、写 CRUD 应用。但 Claude-of-Duty 展示了不同的可能性——开发者可以声明一个模糊的目标（”做一个使命召唤品质的游戏”），然后 AI 自主完成从 3D 场景搭建、游戏逻辑编写到交互实现的全部工作。</p>
+<p>Three.js 作为 Web 3D 渲染库，本身就有一定的学习曲线。但在 AI 的辅助下，开发者不再需要逐行理解 Three.js 的 API 文档，而是可以通过自然语言描述需求，让 AI 生成完整的 3D 游戏界面。</p>
+<h2 id="Goal-Coding-的实践案例"><a href="#Goal-Coding-的实践案例" class="headerlink" title="Goal Coding 的实践案例"></a>Goal Coding 的实践案例</h2><p>这个项目也是 Goal Coding 范式的生动体现。开发者没有一步步指挥 AI”先建一个场景，再加一个角色，然后写射击逻辑”，而是直接声明了终点——“构建一个使命召唤品质的 FPS 游戏”。AI 自主规划执行路径，完成从零到可运行原型的全过程。</p>
+<p>正如刘小排所说：<strong>“高手比的是，谁能把’什么叫做完’定义清楚。”</strong></p>
+<h2 id="对开发者的启示"><a href="#对开发者的启示" class="headerlink" title="对开发者的启示"></a>对开发者的启示</h2><ol>
+<li><strong>AI 编程的边界在扩展</strong>：从写代码到构建完整游戏，AI 的能力边界正在快速扩展</li>
+<li><strong>声明式开发成为新范式</strong>：告诉 AI”做什么”而非”怎么做”，正在成为更高效的开发方式</li>
+<li><strong>Three.js 等前端技术栈受益明显</strong>：Web 技术栈的即时可视化特性，让 AI 生成的内容可以立刻被验证和体验</li>
+</ol>
+<h2 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h2><ul>
+<li><a href="https://github.com/mshumer/Claude-of-Duty">Claude-of-Duty - GitHub</a></li>
+<li><a href="https://shumer.dev/newsletter">Matt Shumer Newsletter</a></li>
+<li>灵感来源：每日回顾笔记（lg-id: 20260802-7dec）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>AI 实践</category>
+      </categories>
+      <tags>
+        <tag>Claude Code</tag>
+        <tag>AI编程</tag>
+        <tag>游戏开发</tag>
+        <tag>Three.js</tag>
+      </tags>
+  </entry>
 </search>
