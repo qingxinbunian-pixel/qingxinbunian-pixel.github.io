@@ -1160,4 +1160,43 @@
         <tag>桌面开发</tag>
       </tags>
   </entry>
+  <entry>
+    <title>AI 没有取代程序员，它正在压缩&quot;软件工程师中产&quot;</title>
+    <url>/ai-compress-engineers-2026-08-28/</url>
+    <content><![CDATA[<h1 id="AI-没有取代程序员，它正在压缩”软件工程师中产”"><a href="#AI-没有取代程序员，它正在压缩”软件工程师中产”" class="headerlink" title="AI 没有取代程序员，它正在压缩”软件工程师中产”"></a>AI 没有取代程序员，它正在压缩”软件工程师中产”</h1><p>最近在整理每日回顾时，一份”AI 压缩软件工程中产”的研学报告让我停了一下。它和之前读过的 Benedict Evans 分析放在一起，恰好拼出了一个比”AI 取代程序员”更准确的画面：<strong>AI 不是取代程序员，而是在压缩”软件工程师中产”</strong>。</p>
+<h2 id="什么是”软件工程师中产”"><a href="#什么是”软件工程师中产”" class="headerlink" title="什么是”软件工程师中产”"></a>什么是”软件工程师中产”</h2><p>所谓”中产”，指的是中间层执行者——写常规 CRUD、业务逻辑、胶水代码的那部分工程师。他们夹在两端之间：</p>
+<ul>
+<li><strong>塔尖</strong>：架构、系统设计、领域专家。他们的价值在于判断和全局视野，AI 短期难以替代。</li>
+<li><strong>塔基</strong>：仍在学习、以判断力见长的初级工程师。他们人少、便宜，且正处于快速成长的爬坡期。</li>
+<li><strong>中产</strong>：人数最多、Task 占比最高、工作最”可复述可验收可复制”的一层。</li>
+</ul>
+<p>被压缩的，恰恰是这一层。</p>
+<h2 id="用-Task-Job-框架理解"><a href="#用-Task-Job-框架理解" class="headerlink" title="用 Task&#x2F;Job 框架理解"></a>用 Task&#x2F;Job 框架理解</h2><p>Benedict Evans 的分析核心是 <strong>Task 被压缩、判断升值</strong>：AI 擅长的是”可复述、可验收、可复制”的 Task，而真正值钱的是 Job——把对的问题、对的上下文、对的验收标准交出来。</p>
+<p>软件工程师中产的工作，恰好 Task 占比最高。当 Claude Code、Cursor、Kimi K3 这类智能体编程工具直接打进主流程，被替代的不是”程序员”这个身份，而是”搬 Task”这个环节。</p>
+<h2 id="一个值得玩味的旁证"><a href="#一个值得玩味的旁证" class="headerlink" title="一个值得玩味的旁证"></a>一个值得玩味的旁证</h2><p>几乎同一时间（2026-08-28），智谱的匿名屠榜模型 ox-alpha 被揭晓为 GLM-5.3-Flash——320B 参数 MoE，仅 18B 活跃参数。开源模型追赶前沿的速度，比很多人预期的要快。</p>
+<p>这两件事是同一枚硬币的两面：</p>
+<ul>
+<li>开源模型在快速追平闭源前沿，意味着<strong>能用更低的成本获得更强的模型</strong>；</li>
+<li>更强的模型 + 更低的成本 &#x3D; AI 编程工具的渗透面更大、执行 Task 的性价比更高；</li>
+<li>于是，代码”中产”的压缩速度会更快，而不是更慢。</li>
+</ul>
+<h2 id="那该怎么办"><a href="#那该怎么办" class="headerlink" title="那该怎么办"></a>那该怎么办</h2><p>别把抗拒当职业策略——“我永远不用 AI”只会让自己离未来更远。真正值得做的：</p>
+<ol>
+<li><strong>往判断力上靠</strong>：架构、产品判断、领域深度，这些是 Task 压缩不了的部分。</li>
+<li><strong>把 Task 外包给 AI</strong>：让工具去做 CRUD 和胶水代码，把时间留给”判断”。</li>
+<li><strong>做 AI 的验收者</strong>：会写代码的人 + AI，胜过一个只会堆代码的团队。</li>
+</ol>
+<hr>
+<p><em>本文内容整理自知识库 wiki（AI 对就业影响的理性分析、主权AI 等页面）与 2026-08-28 每日回顾。参考来源：Benedict Evans「AI 理性视角」、Devansh「AI 行业修正」、研学报告「AI 压缩软件工程中产」。</em></p>
+]]></content>
+      <categories>
+        <category>AI 观察</category>
+      </categories>
+      <tags>
+        <tag>开源模型</tag>
+        <tag>AI</tag>
+        <tag>程序员</tag>
+        <tag>就业</tag>
+      </tags>
+  </entry>
 </search>
