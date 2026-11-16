@@ -295,3 +295,144 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
 }
+
+/* ===================================
+   2026-11-16 视觉精修 v2
+   =================================== */
+
+/* ===== 首页欢迎横幅：光晕 + 依次入场 ===== */
+.welcome-banner {
+  position: relative;
+  overflow: hidden;
+}
+.welcome-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(253, 203, 110, 0.18), transparent 55%),
+              radial-gradient(circle at 70% 70%, rgba(225, 112, 85, 0.16), transparent 55%);
+  animation: bannerGlow 10s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.welcome-banner > * { position: relative; z-index: 1; }
+@keyframes bannerGlow {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(4%, 6%) scale(1.08); }
+}
+.welcome-banner h1 { animation: fadeInUp 0.7s ease both; }
+.welcome-banner p  { animation: fadeInUp 0.7s 0.15s ease both; }
+
+/* ===== 项目卡片：hover 图标跳动 + 顶部高亮 ===== */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.project-card:hover::after { opacity: 1; }
+.project-card:hover i { animation: iconBounce 0.6s ease; }
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px) scale(1.08); }
+}
+
+/* ===== 文章封面卡片：图片悬停放大 ===== */
+.recent-post-item .post_cover img,
+.post_cover img {
+  transition: transform 0.5s ease;
+}
+.recent-post-item:hover .post_cover img {
+  transform: scale(1.06);
+}
+.post_cover {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* ===== 排版细节 ===== */
+/* 选中文本颜色 */
+::selection {
+  background: rgba(225, 112, 85, 0.85);
+  color: #fff;
+}
+/* 引用块 */
+blockquote {
+  border-left: 4px solid var(--primary-color) !important;
+  background: rgba(225, 112, 85, 0.08);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 18px;
+}
+/* 行内代码 */
+code:not([class]) {
+  background: rgba(225, 112, 85, 0.12);
+  color: var(--primary-color);
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+/* 文章内链接下划线动画 */
+#article-container a:not(.btn) {
+  background-image: linear-gradient(var(--primary-color), var(--primary-color));
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 0.3s ease;
+}
+#article-container a:not(.btn):hover { background-size: 100% 2px; }
+
+/* ===== 暗色模式专项 ===== */
+[data-theme="dark"] {
+  --glass-bg: rgba(30, 30, 40, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+[data-theme="dark"] .welcome-banner p,
+[data-theme="dark"] .post-item p {
+  color: rgba(255, 255, 255, 0.82);
+}
+/* 暗色下横幅图压暗，避免刺眼 */
+[data-theme="dark"] #page-header:not(.full_page)::before {
+  background: rgba(0, 0, 0, 0.45) !important;
+}
+[data-theme="dark"] blockquote {
+  background: rgba(225, 112, 85, 0.12);
+}
+[data-theme="dark"] code:not([class]) {
+  background: rgba(225, 112, 85, 0.18);
+  color: #f0a58c;
+}
+/* 暗色下星空背景整体压暗 */
+[data-theme="dark"] #web_bg {
+  filter: brightness(0.55);
+}
+
+/* ===== 移动端优化 ===== */
+@media (max-width: 768px) {
+  .welcome-banner h1 { font-size: 1.7em; }
+  .welcome-banner { padding: 26px 18px; margin-bottom: 36px; }
+  .projects-grid { gap: 14px; margin-bottom: 36px; }
+  .card-widget, .post-block, .article-container {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+}
+
+/* 尊重系统减少动效设置 */
+@media (prefers-reduced-motion: reduce) {
+  .welcome-banner::before,
+  .welcome-banner h1,
+  .welcome-banner p,
+  .project-card:hover i {
+    animation: none !important;
+  }
+}

@@ -1,6 +1,18 @@
 (function() {
+  // ===== 24 小时内只弹一次（老访客不再被拦截） =====
+  const SPLASH_KEY = 'xiaowo_splash_seen';
+  try {
+    const seen = parseInt(localStorage.getItem(SPLASH_KEY) || '0', 10);
+    const now = Date.now();
+    const DAY = 24 * 60 * 60 * 1000;
+    if (seen && now - seen < DAY) {
+      return; // 24h 内已看过，直接跳过整个 splash
+    }
+    localStorage.setItem(SPLASH_KEY, String(now));
+  } catch (e) { /* localStorage 不可用时照常显示 */ }
+
   // 1. 定义视频路径 (对应你放在 source/video/ 下的文件)
-  const videoPath = '/video/splash-video.mp4'; 
+  const videoPath = '/video/splash-video.mp4';
 
   // 2. 创建 HTML 结构 (加入了 video 标签)
   const splashHTML = `
